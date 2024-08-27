@@ -1,5 +1,6 @@
 import './App.css'
 import Blogs from './components/Blogs';
+import FeedbackComments from './components/FeedbackComments';
 import Footer from './components/Footer';
 import HeroCarousel from './components/HeroCarousel'
 import Navbar from './components/Navbar'
@@ -33,11 +34,12 @@ function App() {
    <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
     <Blogs></Blogs>
   </section>
-    <section id="kuchikomi" className={"min-h-80 flex flex-col px-4"}>
+  <section id="kuchikomi" className={"min-h-80 flex flex-col px-4"}>
    <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
      <h1 className="text-3xl font-bold underline text-red-400 p-48">
     Customer Reviews
-  </h1>
+    </h1>
+    <FeedbackComments/>
   </section>
   <Footer></Footer>
     </div>
