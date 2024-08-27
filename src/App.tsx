@@ -1,4 +1,5 @@
 import './App.css'
+import Footer from './components/Footer';
 import HeroCarousel from './components/HeroCarousel'
 import Navbar from './components/Navbar'
 
@@ -18,6 +19,7 @@ function App() {
      <h1 className="text-3xl font-bold underline text-red-400">
     Hello world!
   </h1>
+  <Footer></Footer>
     </>
   )
 }
