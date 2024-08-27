@@ -30,7 +30,7 @@ export default function Navbar() {
                 className="h-40 p-0 m-0"
               />
               <div className='flex'>
-              <a key="home" href="./" className='hidden md:ml-2 md:block flex flex-1 items-center justify-center text-secondary text-lg hover:bg-tertiary text-white text-secondary px-10 py-6'>HOME</a>
+              <a key="home" href="./" className='hidden md:ml-2 md:block flex flex-1 items-center justify-center text-secondary text-lg hover:text-secondary text-white text-secondary px-10 py-6'>HOME</a>
               </div>
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-end">
             <div className="hidden md:ml-6 md:block">
@@ -40,7 +40,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     className=
-                      'hover:bg-tertiary text-white text-secondary px-4 py-6 text-md font-medium'
+                      'hover:text-secondary text-white text-secondary px-4 py-6 text-md font-medium'
                   >
                     {item.name}
                   </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
             <button
               type="button"
-              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:bg-secondary-800  hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800"
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">English Japanese translation</span>
