@@ -27,7 +27,7 @@ export default function Navbar() {
               <img
                 alt="プライドランドロゴ"
                 src='../src/assets/logo.png'
-                className="h-20"
+                className="h-40 p-0 m-0"
               />
               <div className='flex'>
               <a key="home" href="./" className='hidden md:ml-2 md:block flex flex-1 items-center justify-center text-secondary text-lg hover:bg-tertiary text-white text-secondary px-10 py-6'>HOME</a>
