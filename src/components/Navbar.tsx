@@ -13,7 +13,7 @@ const navigation = [
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-primary">
+    <Disclosure as="nav" className="bg-primary sticky top-0 z-50">
       <div className="px-6 md:px-2">
         <div className="relative flex h-24 items-center md:justify-between pl-36 sm:pl-72 md:px-0">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
