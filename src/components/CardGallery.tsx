@@ -1,7 +1,8 @@
 import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import Card from "./Card";
+
+import CardCarousel from "./CardCarousel";
 
 const cardRefs = [
   { name: "Gallery", href: "#" },
@@ -42,6 +43,7 @@ export default function CardGallery() {
               </Radio>
             ))}
           </RadioGroup>
+       <CardCarousel />
         </div>
       </div>
     </div>
