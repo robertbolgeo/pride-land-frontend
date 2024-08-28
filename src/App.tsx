@@ -36,9 +36,6 @@ function App() {
   </section>
   <section id="kuchikomi" className={"min-h-80 flex flex-col px-4"}>
    <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
-     <h1 className="text-3xl font-bold underline text-red-400 p-48">
-    Customer Reviews
-    </h1>
     <FeedbackComments/>
   </section>
   <Footer></Footer>
