@@ -1,15 +1,9 @@
 import { HeroCarouselProps } from "../App";
-import { useEffect, useState } from "react";
-import * as blogsapi from '../api/blogs';
-
+import { useState } from "react";
 
 export default function HeroCarousel({images}: HeroCarouselProps) {
-  const [imageBucket, setImageBucket] = useState<[] | null>([]);
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  useEffect(() => {
-    fetchImageData();
-  }, []);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide === images.length - 1 ? 0 : prevSlide + 1));
@@ -19,21 +13,9 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? images.length - 1 : prevSlide - 1));
   };
 
-  const fetchImageData = async () => {
-  try {
-
-  }catch (error){
-        console.log(error)
-  }
-  }
-
+ 
   return (
     <>
-    <div>{imageBucket?.map((elt, index) => (
-        <div key={index}>{elt}</div>
-    ))}
-
-    </div>
 
     <div className="overflow-hidden relative">
   <div className="flex transition ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
