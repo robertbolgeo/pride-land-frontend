@@ -1,6 +1,7 @@
 import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
+
 import CardCarousel from "./CardCarousel";
 
 const cardRefs = [
@@ -24,13 +25,13 @@ export default function CardGallery() {
             value={selected}
             onChange={setSelected}
             aria-label="Server size"
-            className="space-y-3 w-1/4 min-w-52"
+            className="w-1/4 min-w-52 bg-[#fff024] rounded-xl"
           >
             {cardRefs.map((cardRef) => (
               <Radio
                 key={cardRef.name}
                 value={cardRef}
-                className="group relative flex cursor-pointer rounded-lg bg-[#fff024] py-4 px-5 shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+                className="group relative flex cursor-pointer rounded-lg bg-[#fff024] py-4 px-5 transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:scale-110 data-[checked]:translate-x-4"
               >
                 <div className="flex w-full items-center justify-between">
                   <div className="text-3xl">
@@ -38,7 +39,6 @@ export default function CardGallery() {
                       {cardRef.name}
                     </p>
                   </div>
-                  <CheckCircleIcon className="size-6 fill-white opacity-0 transition group-data-[checked]:opacity-100" />
                 </div>
               </Radio>
             ))}

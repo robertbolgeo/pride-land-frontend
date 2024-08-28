@@ -1,7 +1,12 @@
 import CardPropsType from "../interfaces/CardType";
 
-
-export const Card = ({id, title, description, imgsrc, link}: CardPropsType) => {
+export const Card = ({
+  id,
+  title,
+  description,
+  imgsrc,
+  link,
+}: CardPropsType) => {
   return (
     <div key={id} className="first:ml-[10%] mx-12 text-center max-w-sm bg-[#ffffff] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-w-[25%]">
       <a href={link}>
