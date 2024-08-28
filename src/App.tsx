@@ -1,6 +1,6 @@
 import "./App.css";
 import Blogs from "./components/Blogs";
-import CardCarousel from "./components/CardCarousel";
+
 import CardGallery from "./components/CardGallery";
 import FeedbackComments from "./components/FeedbackComments";
 import Footer from "./components/Footer";
