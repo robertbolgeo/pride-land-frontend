@@ -1,5 +1,6 @@
 import "./App.css";
 import Blogs from "./components/Blogs";
+import CardCarousel from "./components/CardCarousel";
 import CardGallery from "./components/CardGallery";
 import FeedbackComments from "./components/FeedbackComments";
 import Footer from "./components/Footer";
@@ -28,7 +29,7 @@ function App() {
       <Slogan></Slogan>
       <section id="cards" className={"min-h-80 flex flex-col px-4"}>
         <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
-        <CardGallery />
+        <CardGallery/>
       </section>
       <section id="map" className={"min-h-80 flex flex-col"}>
         <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
