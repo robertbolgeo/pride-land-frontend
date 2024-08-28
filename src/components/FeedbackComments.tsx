@@ -17,22 +17,21 @@ const FeedbackComments = () => {
     }
 
     const createFeedbackDiv = feedbacks.map((feedback, index) => {
-        return <div id={"feedback-" + String(index+1)} key={feedback.name + index}>
-
-            <div className="bg-white p-6 flex flex-col-1 justify-between text-center text-md rounded-md drop-shadow-lg">
-            <div>
-                <h1>{feedback.comment}</h1>
+        return <div id={"feedback-" + String(index+1)} key={feedback.name + index} className='m-4 flex flex-col justify-center'>
+                <div className="bg-white p-6 flex flex-col text-center text-md rounded-md drop-shadow-lg my-3">
+                    <div className=''>
+                        <h1>{feedback.comment}</h1>
+                    </div>
+                    <div className=''>
+                        <p>{feedback.name}</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>{feedback.name}</p>
-            </div>
-        </div>
-        </div>
 
     })
 
   return (
-    <div id='all-feedbacks'>
+    <div id='all-feedbacks' className='mx-auto max-w-full flex gap-10'>
         {createFeedbackDiv}
     </div>
   )
