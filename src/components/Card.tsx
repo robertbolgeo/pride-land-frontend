@@ -1,19 +1,33 @@
 import CardPropsType from "../interfaces/CardType";
 
-
-export const Card = ({id, title, description, imgsrc, link}: CardPropsType) => {
+export const Card = ({
+  id,
+  title,
+  description,
+  imgsrc,
+  link,
+}: CardPropsType) => {
   return (
-    <div key={id} className="mx-3 max-w-sm bg-[#ffffff] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div
+      key={id}
+      className="mx-3 max-w-sm bg-[#ffffff] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
       <a href={link}>
         <img className="rounded-t-lg" src={imgsrc} alt="" />
       </a>
       <div className="p-5">
         <a href={link}>
-          <h5 id="title" className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5
+            id="title"
+            className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
             {title}
           </h5>
         </a>
-        <p id="description" className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <p
+          id="description"
+          className="mb-3 font-normal text-gray-700 dark:text-gray-400"
+        >
           {description}
         </p>
         <a
@@ -40,4 +54,6 @@ export const Card = ({id, title, description, imgsrc, link}: CardPropsType) => {
       </div>
     </div>
   );
-}
+};
+
+export default Card;
