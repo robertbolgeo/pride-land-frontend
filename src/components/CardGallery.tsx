@@ -17,7 +17,7 @@ export default function CardGallery() {
 
   return (
     <div className="(Component containment block) w-full px-4">
-      <div className="bg-[#fff569] rounded-xl p-16 my-20">
+      <div className="bg-[rgb(59,102,63)] rounded-xl p-16 my-20">
         <div className="flex">
           <RadioGroup
             name="name"
@@ -30,11 +30,13 @@ export default function CardGallery() {
               <Radio
                 key={cardRef.name}
                 value={cardRef}
-                className="group relative flex cursor-pointer rounded-lg bg-[#fff024] py-4 px-5 text-white shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+                className="group relative flex cursor-pointer rounded-lg bg-[#fff024] py-4 px-5 shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
               >
                 <div className="flex w-full items-center justify-between">
                   <div className="text-3xl">
-                    <p className="font-semibold text-white">{cardRef.name}</p>
+                    <p className="font-semibold text-[rgb(82,49,21)]">
+                      {cardRef.name}
+                    </p>
                   </div>
                   <CheckCircleIcon className="size-6 fill-white opacity-0 transition group-data-[checked]:opacity-100" />
                 </div>
