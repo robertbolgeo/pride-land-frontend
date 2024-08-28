@@ -1,10 +1,15 @@
 import { HeroCarouselProps } from "../App";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as blogsapi from '../api/blogs';
 
 
 export default function HeroCarousel({images}: HeroCarouselProps) {
+  const [imageBucket, setImageBucket] = useState<[] | null>([]);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
+  useEffect(() => {
+    fetchImageData();
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide === images.length - 1 ? 0 : prevSlide + 1));
@@ -14,17 +19,33 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? images.length - 1 : prevSlide - 1));
   };
 
+  const fetchImageData = async () => {
+  try {
+
+  }catch (error){
+        console.log(error)
+  }
+  }
 
   return (
+    <>
+    <div>{imageBucket?.map((elt, index) => (
+        <div key={index}>{elt}</div>
+    ))}
+
+    </div>
+
     <div className="overflow-hidden relative">
   <div className="flex transition ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {images.map((image, index) => (
             <img key={index} src={image.src} alt={image.alt} />
+          
         ))}
     </div>
     <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
         {images.map((image, index) => (
-            <button 
+            <button
+                key = {index}  
                 type="button" 
                 id={image.alt} 
                 className="w-10 h-10 rounded-full" 
@@ -63,5 +84,6 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
         </span>
     </button> 
     </div>
+    </>
       );
 }
