@@ -2,10 +2,19 @@ import { useEffect, useState } from 'react'
 import * as feedbackApi from "../api/feedbacks"
 import FeedbackType from '../interfaces/FeedbackType';
 
-const FeedbackComments = () => {
+
+interface ImageType {
+    src: string,
+    alt: string
+}
+interface Props {
+    images: ImageType []
+}
+
+const FeedbackComments: React.FC<Props> = (props) => {
 
     const [feedbacks, setFeedbacks] = useState<FeedbackType []>([]);
-
+    
     useEffect(() => {
         fetchAllFeedbacks();
     }, [])
@@ -19,6 +28,9 @@ const FeedbackComments = () => {
     const createFeedbackDiv = feedbacks.map((feedback, index) => {
         return <div id={"feedback-" + String(index+1)} key={feedback.name + index} className='m-4 flex flex-col justify-center'>
                 <div className="bg-white p-6 flex flex-col text-center text-md rounded-md drop-shadow-lg my-3">
+                    <div>
+                        <img src={props.images[index].src}></img>
+                    </div>
                     <div className=''>
                         <h1>{feedback.comment}</h1>
                     </div>

@@ -45,7 +45,9 @@ function App() {
       </section>
       <section id="kuchikomi" className={"min-h-80 flex px-4"}>
         <div className="flex max-w-[1400] mx-auto w-full ">
-          <FeedbackComments />
+          <FeedbackComments 
+            images = {images}
+          />
         </div>
       </section>
       <Footer></Footer>
