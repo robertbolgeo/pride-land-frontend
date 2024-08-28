@@ -25,13 +25,13 @@ export default function CardGallery() {
             value={selected}
             onChange={setSelected}
             aria-label="Server size"
-            className="w-1/4 min-w-52 bg-[#fff024] rounded-xl"
+            className="w-1/4 min-w-52 rounded-xl"
           >
             {cardRefs.map((cardRef) => (
               <Radio
                 key={cardRef.name}
                 value={cardRef}
-                className="group relative flex cursor-pointer rounded-lg bg-[#fff024] py-4 px-5 transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:scale-110 data-[checked]:translate-x-4"
+                className="group relative flex cursor-pointer rounded-lg border-solid border-2 border-[rgb(82,49,21)] bg-[#fff024] py-4 px-5 transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:scale-110 data-[checked]:translate-x-4 data-[checked]:drop-shadow-md data-[checked]:mb-4 data-[checked]:translate-y-2"
               >
                 <div className="flex w-full items-center justify-between">
                   <div className="text-3xl">
