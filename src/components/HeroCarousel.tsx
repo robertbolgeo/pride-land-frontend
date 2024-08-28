@@ -1,10 +1,9 @@
 import { HeroCarouselProps } from "../App";
 import { useState } from "react";
 
-
 export default function HeroCarousel({images}: HeroCarouselProps) {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide === images.length - 1 ? 0 : prevSlide + 1));
@@ -14,12 +13,15 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? images.length - 1 : prevSlide - 1));
   };
 
-
+ 
   return (
+    <>
+
     <div className="overflow-hidden relative">
   <div className="flex transition ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {images.map((image, index) => (
             <img key={index} src={image.src} alt={image.alt} />
+          
         ))}
     </div>
     <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
@@ -64,5 +66,6 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
         </span>
     </button> 
     </div>
+    </>
       );
 }
