@@ -1,4 +1,4 @@
-import CardPropsType from "../interfaces/CardType"
+import CardPropsType from "../../interfaces/CardType"
 import { Card } from "./Card"
 import { useState } from "react"
 
