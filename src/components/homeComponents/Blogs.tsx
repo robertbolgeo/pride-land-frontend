@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import * as blogsApi from '../api/blogs';
-import BlogsTypes from '../interfaces/BlogsType';
+import * as blogsApi from '../../api/blogs';
+import BlogsTypes from '../../interfaces/BlogsType';
 
 interface ImageType {
    src: string,
