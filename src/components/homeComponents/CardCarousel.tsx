@@ -1,6 +1,6 @@
 import CardPropsType from "../../interfaces/CardType"
 import { Card } from "./Card"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 const cardRefs: CardPropsType[] = [
