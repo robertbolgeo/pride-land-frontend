@@ -2,6 +2,7 @@ import CardPropsType from "../../interfaces/CardType"
 import { Card } from "./Card"
 import { useState } from "react"
 
+
 const cardRefs: CardPropsType[] = [
   { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "https://via.placeholder.com/150", link: "#" },
   { id: 2, title: "Cultivate", description: "Learn about our cultivation process", imgsrc: "https://via.placeholder.com/150", link: "#" },

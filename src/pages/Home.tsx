@@ -6,9 +6,6 @@ import HeroCarousel from "../components/homeComponents/HeroCarousel";
 // import Navbar from "../components/Navbar";
 import Slogan from "../components/homeComponents/Slogan";
 
-export interface HeroCarouselProps {
-  images: { src: string; alt: string }[];
-}
 
 function Home() {
   const images = [

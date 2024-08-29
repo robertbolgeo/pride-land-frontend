@@ -1,7 +1,8 @@
-import { HeroCarouselProps } from "../../pages/Home";
+
+import HeroCarouselPropsType from "../../interfaces/HeroCarouselPropsType";
 import { useState } from "react";
 
-export default function HeroCarousel({images}: HeroCarouselProps) {
+export default function HeroCarousel({images}: HeroCarouselPropsType) {
 
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
