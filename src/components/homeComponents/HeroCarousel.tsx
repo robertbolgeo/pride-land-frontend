@@ -1,4 +1,4 @@
-import { HeroCarouselProps } from "../App";
+import { HeroCarouselProps } from "../../App";
 import { useState } from "react";
 
 export default function HeroCarousel({images}: HeroCarouselProps) {

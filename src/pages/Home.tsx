@@ -1,10 +1,10 @@
-import Blogs from "../components/Blogs";
-import CardGallery from "../components/CardGallery";
-import FeedbackComments from "../components/FeedbackComments";
-import Footer from "../components/Footer";
-import HeroCarousel from "../components/HeroCarousel";
+import Blogs from "../components/homeComponents/Blogs";
+import CardGallery from "../components/homeComponents/CardGallery";
+import FeedbackComments from "../components/homeComponents/FeedbackComments";
+
+import HeroCarousel from "../components/homeComponents/HeroCarousel";
 // import Navbar from "../components/Navbar";
-import Slogan from "../components/Slogan";
+import Slogan from "../components/homeComponents/Slogan";
 
 export interface HeroCarouselProps {
   images: { src: string; alt: string }[];

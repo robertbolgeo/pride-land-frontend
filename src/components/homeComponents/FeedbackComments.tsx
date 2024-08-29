@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import * as feedbackApi from "../api/feedbacks"
-import FeedbackType from '../interfaces/FeedbackType';
+import * as feedbackApi from "../../api/feedbacks"
+import FeedbackType from '../../interfaces/FeedbackType';
 
 
 interface ImageType {
