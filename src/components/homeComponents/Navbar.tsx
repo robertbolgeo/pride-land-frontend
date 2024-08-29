@@ -30,7 +30,7 @@ export default function Navbar() {
                 className="h-40 p-0 m-0"
               />
               <div className='flex'>
-              <a key="home" href="./" className='hidden md:ml-2 md:block flex flex-1 items-center justify-center text-secondary text-lg hover:text-secondary text-white text-secondary px-10 py-6'>HOME</a>
+              <a key="home" href="./" className='hidden md:ml-2 md:block flex-1 items-center justify-center text-secondary text-lg hover:text-white px-10 py-6'>HOME</a>
               </div>
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-end">
             <div className="hidden md:ml-6 md:block">
@@ -40,7 +40,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     className=
-                      'hover:text-secondary text-white text-secondary px-4 py-6 text-md font-medium'
+                      'hover:text-white text-secondary px-4 py-6 text-md font-medium'
                   >
                     {item.name}
                   </a>
@@ -70,7 +70,7 @@ export default function Navbar() {
               href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className=
-                'bg-gray-900 text-secondary hover:bg-gray-700 hover:bg-tertiary hover:text-white block rounded-md px-3 py-2 text-lg font-medium'
+                'bg-primary text-secondary block rounded-md px-3 py-2 text-lg font-medium'
             > 
               {item.name}
             </DisclosureButton>
