@@ -24,7 +24,7 @@ export default function CardCarousel() {
       <div className="overflow-hidden relative">
           <div className="flex transition ease-out duration-700" style={{ transform: `translateX(-${currentCard * 33}%)` }}>
                {cardRefs.map((card, index) => (
-                     <Card id={index} title={card.title} description={card.description} imgsrc={card.imgsrc} link={card.link} />
+                     <Card id={index} key={index} title={card.title} description={card.description} imgsrc={card.imgsrc} link={card.link} />
                ))}
                </div>
           </div>
