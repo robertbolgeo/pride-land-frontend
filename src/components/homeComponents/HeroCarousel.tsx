@@ -1,3 +1,4 @@
+
 import HeroCarouselPropsType from "../../interfaces/HeroCarouselPropsType";
 import { useState } from "react";
 

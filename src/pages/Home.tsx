@@ -6,6 +6,7 @@ import HeroCarousel from "../components/homeComponents/HeroCarousel";
 // import Navbar from "../components/Navbar";
 import Slogan from "../components/homeComponents/Slogan";
 
+
 function Home() {
   const images = [
     { src: "../src/assets/chickens.jpg", alt: "chickens" },
