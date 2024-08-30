@@ -13,7 +13,7 @@ const navigation = [
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-primary">
+    <Disclosure as="nav" className="bg-primary sticky top-0 z-50">
       <div className="px-6 md:px-2">
         <div className="relative flex h-24 items-center md:justify-between pl-36 sm:pl-72 md:px-0">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -27,10 +27,10 @@ export default function Navbar() {
               <img
                 alt="プライドランドロゴ"
                 src='../src/assets/logo.png'
-                className="h-20"
+                className="h-40 p-0 m-0"
               />
               <div className='flex'>
-              <a key="home" href="./" className='hidden md:ml-2 md:block flex flex-1 items-center justify-center text-secondary text-lg hover:bg-tertiary text-white text-secondary px-10 py-6'>HOME</a>
+              <a key="home" href="./" className='hidden md:ml-2 md:block flex-1 items-center justify-center text-secondary text-lg hover:text-white px-10 py-6'>HOME</a>
               </div>
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-end">
             <div className="hidden md:ml-6 md:block">
@@ -40,7 +40,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     className=
-                      'hover:bg-tertiary text-white text-secondary px-4 py-6 text-md font-medium'
+                      'hover:text-white text-secondary px-4 py-6 text-md font-medium'
                   >
                     {item.name}
                   </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
             <button
               type="button"
-              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:bg-secondary-800  hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800"
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">English Japanese translation</span>
@@ -70,7 +70,7 @@ export default function Navbar() {
               href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className=
-                'bg-gray-900 text-secondary hover:bg-gray-700 hover:bg-tertiary hover:text-white block rounded-md px-3 py-2 text-lg font-medium'
+                'bg-primary text-secondary block rounded-md px-3 py-2 text-lg font-medium'
             > 
               {item.name}
             </DisclosureButton>

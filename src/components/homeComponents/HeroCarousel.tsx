@@ -1,10 +1,10 @@
-import { HeroCarouselProps } from "../App";
+
+import HeroCarouselPropsType from "../../interfaces/HeroCarouselPropsType";
 import { useState } from "react";
 
+export default function HeroCarousel({images}: HeroCarouselPropsType) {
 
-export default function HeroCarousel({images}: HeroCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide === images.length - 1 ? 0 : prevSlide + 1));
@@ -14,17 +14,21 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? images.length - 1 : prevSlide - 1));
   };
 
-
+ 
   return (
+    <>
+
     <div className="overflow-hidden relative">
   <div className="flex transition ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {images.map((image, index) => (
             <img key={index} src={image.src} alt={image.alt} />
+          
         ))}
     </div>
     <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
         {images.map((image, index) => (
-            <button 
+            <button
+                key={index} 
                 type="button" 
                 id={image.alt} 
                 className="w-10 h-10 rounded-full" 
@@ -49,7 +53,7 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
 <button type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={previousSlide} aria-label="Previous Slide">
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                <path stroke="currentColor" d="M5 1 1 5l4 4"/>
             </svg>
             <span className="sr-only">Previous</span>
         </span>
@@ -57,11 +61,12 @@ export default function HeroCarousel({images}: HeroCarouselProps) {
     <button type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={nextSlide} aria-label="Next Slide">
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                <path stroke="currentColor" d="m1 9 4-4-4-4"/>
             </svg>
             <span className="sr-only">Next</span>
         </span>
     </button> 
     </div>
+    </>
       );
 }

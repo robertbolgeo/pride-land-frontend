@@ -9,6 +9,8 @@
     "target": "es5",
     "allowJs": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    
 
     /* Bundler mode */
     "allowImportingTsExtensions": true,
