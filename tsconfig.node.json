@@ -5,10 +5,10 @@
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "ES2015",
     "target": "es5",
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     
 
