@@ -29,6 +29,7 @@ const Blogs: React.FC<Props> = (props) => {
           <div className=" ">
                 <div className="bg-white my-4 shadow-md p-2 rounded-lg">
                 <img className="rounded-lg px-20 mt-5 " src={props.images[index].src}></img>
+               
                 <div className="my-2 text-center">{blog.name}</div>
                 <div className="p-3">{blog.text}</div>
               </div>
@@ -39,7 +40,7 @@ const Blogs: React.FC<Props> = (props) => {
 
    return (
       
-      <div className="bg-green-100 mt-36 p-32 mb-0 shadow-lg rounded-md mx-auto max-w-7xl px-6 lg:px-8 "> 
+      <div className="bg-green-100 mt-36 p-32 mb-0 shadow-lg rounded-md  "> 
         <div id='all-blogs'>
           <div>
             {createBlogs}
