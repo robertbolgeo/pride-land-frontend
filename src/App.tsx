@@ -13,17 +13,17 @@ const App = () => {
     <>
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
-              <Route path="/" element={<Layout/>}>
-                  <Route index element={<Home />}/>   
-              </Route>     
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<Home />}/>   
+                </Route>     
 
-              <Route path="login" element={<AdminLogin/>}/>
-                  <Route path="register" element={<AdminRegistration/>} />
-                  <Route path="admin-layout" element={<AdminPage/>}/>
-              </Routes>
-          </AuthProvider>
-        </BrowserRouter>
+                <Route path="login" element={<AdminLogin/>}/>
+                <Route path="register" element={<AdminRegistration/>} />
+                <Route path="admin-layout" element={<AdminPage/>}/>
+            </Routes>
+        </AuthProvider>
+      </BrowserRouter>
     </>
   )
 };

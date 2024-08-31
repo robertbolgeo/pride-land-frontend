@@ -3,3 +3,4 @@ export default interface Blogs {
     name: string,
     text: string,
 }
+

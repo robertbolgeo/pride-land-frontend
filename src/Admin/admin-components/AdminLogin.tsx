@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import AuthContext from "../admin-authContext/AuthContext"
 import { useNavigate } from "react-router-dom";
+import logo from '../../../src/assets/logo.png'
 
 const AdminLogin: React.FC = () => {
 
@@ -9,21 +10,21 @@ const AdminLogin: React.FC = () => {
  
     return (
       <>
-      <div className="flex min-h-full justify-center px-6 py-12 mt-[12rem] lg:px-8">
-          <div className="shadow-2xl p-10 rounded-md bg-gray-100 w-[20rem] h-[28rem]">
+      <div className="flex min-h-full justify-center px-6 py-12 mt-[6rem] lg:px-8">
+          <div className="shadow-2xl rounded-md bg-gray-100 w-[22rem] h-[35rem]">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            {/* <img 
-              className="mx-auto h-10 w-auto"
-              alt="Your Company"
-              src=""
-            /> */}
-            <h2 className="mt-5 text-center text-2xl font-bold text-gray-900">
+            <img
+              alt="Pride-Land"
+              src={logo}
+              className="mx-auto my-0 h-40 "
+            />
+            <h2 className=" text-center text-2xl font-bold text-gray-900">
             ログイン
             </h2>
           </div>
               
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form onSubmit={loginUser} className="space-y-6">
+            <form onSubmit={loginUser} className="space-y-6 px-10">
 
                 {/* Username */}
               <div>
@@ -73,7 +74,7 @@ const AdminLogin: React.FC = () => {
                     onClick={() => navigate("/register", { replace: true })}
                     className="mt-3 text-center text-sm text-gray-500"
 							    >
-								<a href ="#" className="text-center" >新しいアカウンを作成</a>
+								<a href ="#" className="text-center" >新しいアカウントを作成</a>
 							</p>
               </div>
             </div>

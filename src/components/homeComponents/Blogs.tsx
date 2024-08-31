@@ -40,7 +40,7 @@ const Blogs: React.FC<Props> = (props) => {
 
    return (
       
-      <div className="bg-green-100 mt-36 p-32 mb-0 shadow-lg rounded-md  "> 
+      <div className="bg-green-100 mt-36 p-32 mb-0 shadow-lg rounded-md mx-auto max-w-7xl px-6 lg:px-8 "> 
         <div id='all-blogs'>
           <div>
             {createBlogs}

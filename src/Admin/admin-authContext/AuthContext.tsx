@@ -2,22 +2,23 @@ import { ReactNode, createContext, useState, useEffect } from 'react'
 import {jwtDecode} from 'jwt-decode';
 import { useNavigate } from 'react-router-dom'
 
-const AuthContext = createContext();
 
-export default AuthContext;
+const AuthContext = createContext( { user: '', logoutUser: () => {}, loginUser: () => {} } );
+const AUTH_TOKEN  = process.env.backend_auth_url;
 
-export const AuthProvider = ({children} : { children: ReactNode }) => {
+export const AuthProvider = ({ children } : { children: ReactNode }) => {
 
     let [user, setUser] = useState(() => (localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null))
     let [authTokens, setAuthTokens] = useState(() => (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null))
     let [loading, setLoading] = useState(true)
 
     const navigate = useNavigate()
-
+    
+    //Login User - post request to submits form 
     let loginUser = async (e) => {
         e.preventDefault()
         console.log('form submitted')
-        const response = await fetch('http://127.0.0.1:8000/api-pl/token/', {
+        const response = await fetch( AUTH_TOKEN + "token/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,11 +28,11 @@ export const AuthProvider = ({children} : { children: ReactNode }) => {
         });
 
         let data = await response.json();
-        console.log('data:', data)
+        console.log('data:', data) //logs JWT tokens if login is successful
         // With wrong credentials the code get stuck with parsing error message
         // because the response has text message not the access and request tocken in required format
         // performing a check on success of login will prevent this error.
-        // a robust error handling can be implemented but below modification a work around to carry on with the tutorial
+        
 
         if(data && response.ok){
             localStorage.setItem('authTokens', JSON.stringify(data));
@@ -43,6 +44,7 @@ export const AuthProvider = ({children} : { children: ReactNode }) => {
         }
     }
 
+    //Logout user
     let logoutUser = () => {
         // e.preventDefault()
         localStorage.removeItem('authTokens')
@@ -51,8 +53,9 @@ export const AuthProvider = ({children} : { children: ReactNode }) => {
         navigate('/login')
     }
 
+    //Updates and refreshes tokens
     const updateToken = async () => {
-        const response = await fetch('http://127.0.0.1:8000/api-pl/token/refresh/', {
+        const response = await fetch( AUTH_TOKEN + 'token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -74,6 +77,7 @@ export const AuthProvider = ({children} : { children: ReactNode }) => {
         }
     }
 
+    //User form data 
     let contextData = {
         user:user,
         authTokens:authTokens,
@@ -81,11 +85,12 @@ export const AuthProvider = ({children} : { children: ReactNode }) => {
         logoutUser:logoutUser,
     }
 
+    
     useEffect(()=>{
         if(loading){
             updateToken()
         }
-        const REFRESH_INTERVAL = 1000 * 60 * 1 // 1 minutes
+        const REFRESH_INTERVAL = 1000 * 60 * 5 // refreshes token every 5 minutes
         let interval = setInterval(()=>{
             if(authTokens){
                 updateToken()
@@ -100,3 +105,5 @@ export const AuthProvider = ({children} : { children: ReactNode }) => {
         </AuthContext.Provider>
     )
 }
+
+export default AuthContext;
