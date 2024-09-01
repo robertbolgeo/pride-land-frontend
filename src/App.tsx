@@ -20,10 +20,9 @@ const App = () => {
                     <Route index element={<Home />}/>
                     <Route path="volunteers" element={<VolunteerPage/>}/>   
                 </Route>     
-
-                <Route path="login" element={<AdminLogin/>}/>
-                <Route path="register" element={<AdminRegistration/>} />
-                <Route path="admin-layout" element={<AdminPage/>}/>
+                <Route path="/login" element={<AdminLogin/>}/>
+                <Route path="/register" element={<AdminRegistration/>} />
+                <Route path="/admin-layout" element={<AdminPage/>}/>
             </Routes>
         </AuthProvider>
       </BrowserRouter>

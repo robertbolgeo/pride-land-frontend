@@ -1,15 +1,18 @@
 import { useState } from "react"
 import * as volunteerApi from "../../api/volunteers"
+import Volunteer from "../../interfaces/VolunteersType";
 
 
 const volunteerForm = () => {
     const [isSubmitted, setSubmitted] = useState<boolean>(false);
+    const [volunteer, setVolunteer] = useState<Volunteer | null>(null);
 
     const handleIsSubmitted = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try{
             const formData = new FormData(event.currentTarget);
-            await volunteerApi.postVolunteer(formData);
+            const request= await volunteerApi.postVolunteer(formData);
+            setVolunteer(request);
             setSubmitted(true);
         } catch(error) {
             console.log("error submitting form", error)
@@ -43,7 +46,15 @@ const volunteerForm = () => {
                 <button type='submit'>submit</button>
             </form>
         ) : (
-            <div>thank you!</div>
+            <div>
+            {volunteer &&
+                <div>
+                    <h1>Thank you for you interest, {volunteer.name}!</h1>
+                    <h2>You will get an email at {volunteer.email}</h2>
+                    <h2>Make sure you remember the date: {volunteer.start_date.toString()}</h2>
+                </div>
+            }           
+            </div>
         )}
     </div>
   )
