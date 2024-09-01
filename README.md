@@ -42,5 +42,6 @@ $ "tw-elements" -  https://www.npmjs.com/package/tw-elements
 $ "vite" -  https://www.npmjs.com/package/vite
 $ "tailwindcss" - https://www.npmjs.com/package/tailwindcss
 $ "react-router-dom" - https://www.npmjs.com/package/react-router-dom
+$ "jwt-decode" https://www.npmjs.com/package/jwt-decode
 ```
 
