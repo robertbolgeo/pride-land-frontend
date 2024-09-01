@@ -1,21 +1,25 @@
 import { useState } from "react"
-
+import * as volunteerApi from "../../api/volunteers"
 
 
 const volunteerForm = () => {
     const [isSubmitted, setSubmitted] = useState<boolean>(false);
 
-    const handleIsSubmitted = () => {
-        document.forms[0].submit()
-        !isSubmitted ? setSubmitted(true) : setSubmitted(false)
+    const handleIsSubmitted = async(event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        try{
+            const formData = new FormData(event.currentTarget);
+            await volunteerApi.postVolunteer(formData);
+            setSubmitted(true);
+        } catch(error) {
+            console.log("error submitting form", error)
+        }
     }
-    
 
   return (
     <div>
-        <iframe name="dummyframe" id="dummyframe" hidden></iframe>  
         {!isSubmitted ? (
-            <form name="myForm" target="dummyframe" action={process.env.backend_url + "volunteers/"} method='POST'>
+            <form name="myForm" method='POST' onSubmit={handleIsSubmitted}>
                 <label htmlFor='name'>Name: </label>
                     <input type='text' id='name' name='name' required></input> <br/>
                 <label htmlFor='email'>Email: </label>
@@ -36,7 +40,7 @@ const volunteerForm = () => {
                 <label htmlFor='restrictions'>If so what?</label>
                     <input id='restrictions' name='restrictions' type='text'></input> <br/>
                 <input name='status' defaultValue='1' hidden></input>
-                <button type='reset' onClick={handleIsSubmitted}>submit</button>
+                <button type='submit'>submit</button>
             </form>
         ) : (
             <div>thank you!</div>
