@@ -6,6 +6,8 @@ import AdminLogin from "./Admin/admin-components/AdminLogin";
 import AdminPage from "./Admin/admin-components/AdminPage";
 import { AuthProvider } from "./Admin/admin-authContext/AuthContext";
 import AdminRegistration from "./Admin/admin-components/AdminRegistration";
+import VolunteerPage from "./pages/VolunteerPage";
+
 
 
 const App = () => {
@@ -15,12 +17,12 @@ const App = () => {
         <AuthProvider>
             <Routes>
                 <Route path="/" element={<Layout/>}>
-                    <Route index element={<Home />}/>   
+                    <Route index element={<Home />}/>
+                    <Route path="volunteers" element={<VolunteerPage/>}/>   
                 </Route>     
-
-                <Route path="login" element={<AdminLogin/>}/>
-                <Route path="register" element={<AdminRegistration/>} />
-                <Route path="admin-layout" element={<AdminPage/>}/>
+                <Route path="/login" element={<AdminLogin/>}/>
+                <Route path="/register" element={<AdminRegistration/>} />
+                <Route path="/admin-layout" element={<AdminPage/>}/>
             </Routes>
         </AuthProvider>
       </BrowserRouter>
