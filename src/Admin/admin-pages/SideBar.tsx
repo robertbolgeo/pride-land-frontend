@@ -1,0 +1,53 @@
+import { useContext } from "react";
+import AuthContext from "../admin-authContext/AuthContext";
+import { PiFarm } from "react-icons/pi";
+import { DASHBOARD_SIDEBAR_LINKS } from '../admin-utils/lib/Navigation';
+import { HiOutlineLogout } from "react-icons/hi";
+import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import classNames from 'classnames'
+
+interface SideBar {
+    elt : any,
+}
+
+const linkClass =
+	'flex items-center gap-2 font-light px-3 py-2 hover:bg-gray-400 hover:no-underline active:bg-gray-400 rounded-sm text-base'
+
+const SideBar = () => {
+
+    let {  logoutUser } = useContext(AuthContext)
+
+  return (
+    <>
+    <div className='bg-gray-500 flex flex-col w-64 p-2'>
+        <div className='flex justify-center gap-2 items-center p-2'>
+            <span className='text-2xl font-mono font-bold text-white'>Prideland</span><PiFarm fontSize={30} />
+        </div>
+        <div className='flex-1 py-8 flex flex-col gap-0.5'>
+            {DASHBOARD_SIDEBAR_LINKS.map((elt) => (
+                <SideBarLink key={elt.key} elt={elt}/>
+            ))}
+        </div>
+        <hr />
+        <div><div className={classNames(' text-red-500 hover:cursor-pointer mx-5', linkClass)} onClick={logoutUser}>
+            <span className="text-xl"><HiOutlineLogout /></span>Logout</div></div>
+        </div>
+
+    </>
+  )
+}
+
+function SideBarLink({ elt }) {
+
+    const { pathname }= useLocation();
+
+    return (
+        <Link to={elt.path} className={classNames(pathname === elt.path ? 'bg-gray-400 text-white': 'text-white', linkClass)}>
+                <span  className="text-xl">{elt.icon}</span>
+                {elt.label}
+        </Link>
+    )
+}
+
+export default SideBar

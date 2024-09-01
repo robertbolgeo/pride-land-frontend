@@ -11,6 +11,8 @@ const AdminLogin: React.FC = () => {
     return (
       <>
       <div className="flex min-h-full justify-center px-6 py-12 mt-[6rem] lg:px-8">
+          
+          {/* Image & Login */}
           <div className="shadow-2xl rounded-md bg-gray-100 w-[22rem] h-[35rem]">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
@@ -25,7 +27,6 @@ const AdminLogin: React.FC = () => {
               
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form onSubmit={loginUser} className="space-y-6 px-10">
-
                 {/* Username */}
               <div>
                 <label className="block text-sm font-medium text-gray-900">
@@ -35,8 +36,9 @@ const AdminLogin: React.FC = () => {
                   <input
                     type="text" 
                     name="username"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-200 sm:text-sm sm:leading-6"
-                  />
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
+                    ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 
+                    focus:ring-inset focus:ring-yellow-200 sm:text-sm sm:leading-6"/>
                 </div>
               </div>
 
@@ -51,8 +53,9 @@ const AdminLogin: React.FC = () => {
                   <input
                     type="password" 
                     name="password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-200 sm:text-sm sm:leading-6"
-                  />
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm 
+                    ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                    ring-1 ring-inset focus:ring-yellow-200 sm:text-sm sm:leading-6"/>
                 </div>
               </div>
 
@@ -60,14 +63,15 @@ const AdminLogin: React.FC = () => {
               <div>
                 <button
                   type="submit"
-                  className="mt-10 flex w-full justify-center rounded-md bg-gray-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-                >
+                  className="mt-10 flex w-full justify-center rounded-md bg-gray-500 px-3 py-1.5 text-sm 
+                  leading-6 text-white shadow-sm  hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 
+                  font-semibold focus-visible:outline-offset-2 focus-visible:outline-gray-600">
                  ログイン
                 </button>
               </div>
               </form>
 
-             
+             {/* Redirect button to Register */}
               <div className="text-center text-sm font-semibold text-gray-500 mt-4">
                 <p
                     style={{ cursor: "pointer" }}
