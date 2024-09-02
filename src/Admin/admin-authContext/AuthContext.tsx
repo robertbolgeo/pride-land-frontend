@@ -37,7 +37,7 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
         
 
         if(data && response.ok){
-            localStorage.setItem('authTokens', JSON.stringify(data));
+            sessionStorage.setItem('authTokens', JSON.stringify(data));
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             navigate('/admin-layout')
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
     //Logout user
     let logoutUser = () => {
         // e.preventDefault()
-        localStorage.removeItem('authTokens')
+        sessionStorage.removeItem('authTokens')
         setAuthTokens(null)
         setUser(null)
         navigate('/login')
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
         if (response.status === 200) {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
-            localStorage.setItem('authTokens',JSON.stringify(data))
+            sessionStorage.setItem('authTokens',JSON.stringify(data))
         }
         //  else {
         //     logoutUser()
