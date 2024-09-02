@@ -12,6 +12,7 @@ import Volunteer from "./Admin/admin-pages/Volunteer";
 import Comments from "./Admin/admin-pages/Comments";
 import AdminControl from "./Admin/admin-pages/AdminControl";
 import Layouts from "./Admin/admin-pages/Layouts";
+import VolunteerPage from "./pages/VolunteerPage";
 
 
 
