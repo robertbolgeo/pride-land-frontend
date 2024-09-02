@@ -14,6 +14,7 @@ import AdminControl from "./Admin/admin-pages/AdminControl";
 import Layouts from "./Admin/admin-pages/Layouts";
 
 
+
 const App = () => {
   return (
     <>
@@ -21,7 +22,8 @@ const App = () => {
         <AuthProvider>
             <Routes>
                 <Route path="/" element={<Layout/>}>
-                    <Route index element={<Home />}/>   
+                    <Route index element={<Home />}/>
+                    <Route path="volunteers" element={<VolunteerPage/>}/>   
                 </Route>     
 
                 <Route path="login" element={<AdminLogin/>}/>
