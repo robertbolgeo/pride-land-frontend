@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../admin-authContext/AuthContext";
 import { PiFarm } from "react-icons/pi";
 import { DASHBOARD_SIDEBAR_LINKS } from '../admin-utils/lib/Navigation';
-import { HiOutlineLogout } from "react-icons/hi";
+import { HiOutlineLogout, HiOutlineArchive } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import classNames from 'classnames'
@@ -24,13 +24,19 @@ const SideBar = () => {
         <div className='flex justify-center gap-2 items-center p-2'>
             <span className='text-2xl font-mono font-bold text-white'>Prideland</span><PiFarm fontSize={30} />
         </div>
-        <div className='flex-1 py-8 flex flex-col gap-0.5'>
+        <div className="mt-10 mb-0.5">
+            <div className={classNames(' text-white hover:cursor-pointer ', linkClass)}><HiOutlineArchive />
+            <span className="text-[1rem] flex items-center"><Link to="/" >Main Page</Link></span>
+            </div>
+        </div>
+
+        <div className='flex-1  flex flex-col gap-0.5'>
             {DASHBOARD_SIDEBAR_LINKS.map((elt) => (
                 <SideBarLink key={elt.key} elt={elt}/>
             ))}
         </div>
-        <hr />
-        <div><div className={classNames(' text-red-500 hover:cursor-pointer mx-5', linkClass)} onClick={logoutUser}>
+        <hr className="mb-3"/>
+        <div><div className={classNames(' text-red-500 hover:cursor-pointer ', linkClass)} onClick={logoutUser}>
             <span className="text-xl"><HiOutlineLogout /></span>Logout</div></div>
         </div>
 

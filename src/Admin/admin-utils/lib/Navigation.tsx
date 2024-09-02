@@ -16,12 +16,6 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		path: '/admin-layout',
 		icon: <HiOutlineViewGrid />
 	},
-    {
-		key: 'mainpage',
-		label: 'Main Page',
-		path: '',
-		icon: <HiOutlineArchive />
-	},
 	{
 		key: 'blogsadmin',
 		label: 'Blogs',
