@@ -8,14 +8,16 @@ const AUTH_TOKEN  = process.env.backend_auth_url;
 
 export const AuthProvider = ({ children } : { children: ReactNode }) => {
 
-    let [user, setUser] = useState(() => (localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null))
-    let [authTokens, setAuthTokens] = useState(() => (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null))
+    let [user, setUser] = useState(() => (sessionStorage.getItem('authTokens') ? jwtDecode(sessionStorage.getItem('authTokens') ?? '') : null))
+    let [authTokens, setAuthTokens] = useState(() => (sessionStorage.getItem('authTokens') ? JSON.parse(sessionStorage.getItem('authTokens') ?? '') : null))
     let [loading, setLoading] = useState(true)
 
     const navigate = useNavigate()
     
     //Login User - post request to submits form 
-    let loginUser = async (e) => {
+    let loginUser = async (e: React.FormEvent<EventTarget>) => {
+        let target = e.target as HTMLInputElement;
+
         e.preventDefault()
         console.log('form submitted')
         const response = await fetch( AUTH_TOKEN + "token/", {
@@ -23,7 +25,7 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username: e.target.username.value, password: e.target.password.value })
+            body: JSON.stringify({username: target.username.value, password: target.password.value })
     
         });
 
@@ -68,9 +70,10 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             localStorage.setItem('authTokens',JSON.stringify(data))
-        } else {
-            logoutUser()
         }
+        //  else {
+        //     logoutUser()
+        // }
 
         if(loading){
             setLoading(false)
