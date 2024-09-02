@@ -6,14 +6,14 @@ import AdminLogin from "./Admin/admin-components/AdminLogin";
 import { AuthProvider } from "./Admin/admin-authContext/AuthContext";
 import AdminRegistration from "./Admin/admin-components/AdminRegistration";
 import AdminLayout from "./Admin/admin-components/AdminLayout";
-import Dashboard from "./Admin/admin-pages/Dashboard";
-import BlogsAdmin from "./Admin/admin-pages/BlogsAdmin";
-import Volunteer from "./Admin/admin-pages/Volunteer";
-import Comments from "./Admin/admin-pages/Comments";
-import AdminControl from "./Admin/admin-pages/AdminControl";
-import Layouts from "./Admin/admin-pages/Layouts";
 import VolunteerPage from "./pages/VolunteerPage";
 import BlogPage from "./pages/BlogPage";
+import AdminVolunteer from "./Admin/admin-components/AdminVolunteer";
+import AdminBlogs from "./Admin/admin-components/AdminBlogs";
+import AdminDashboard from "./Admin/admin-components/AdminDashboard";
+import AdminLayoutsDashboard from "./Admin/admin-components/AdminLayoutsDashboard";
+import AdminComments from "./Admin/admin-components/AdminComments";
+import AdminControlDashboard from "./Admin/admin-components/AdminControlDashboard";
 
 
 
@@ -28,16 +28,15 @@ const App = () => {
                             <Route path="blog" element={<BlogPage />} />
                             <Route path="volunteers" element={<VolunteerPage />} />
                         </Route>
-
-                        <Route path="login" element={<AdminLogin />} />
-                        <Route path="register" element={<AdminRegistration />} />
-                        <Route path="admin-layout" element={<AdminLayout />}>
-                            <Route index element={<Dashboard />} />
-                            <Route path="blogs-admin" element={<BlogsAdmin />} />
-                            <Route path="volunteer" element={<Volunteer />} />
-                            <Route path="layouts" element={<Layouts />} />
-                            <Route path="comments" element={<Comments />} />
-                            <Route path="admin-controls" element={<AdminControl />} />
+                        <Route path="login" element={<AdminLogin/>}/>
+                        <Route path="register" element={<AdminRegistration/>} />
+                        <Route path="admin-layout" element={<AdminLayout/>}>
+                              <Route index element={<AdminDashboard/>} />
+                              <Route path="blogs-admin" element={<AdminBlogs/>} />
+                              <Route path="volunteer" element={<AdminVolunteer/>} />
+                              <Route path="layouts" element={<AdminLayoutsDashboard/>} />
+                              <Route path="comments" element={<AdminComments/>} />
+                              <Route path="admin-controls" element={<AdminControlDashboard/>} />
                         </Route>
                     </Routes>
                 </AuthProvider>
