@@ -31,7 +31,7 @@ const Comments = () => {
       <div>{feedback.comment}</div>
       <div>{!feedback.is_accepted? "Not Displayed": "Displaying"}</div>
       <div>
-        <input type='checkbox' name='checkbox' onClick={()=>handleStatus(feedback)} checked={feedback.is_accepted? true : false}></input>
+        <input type='checkbox' name='checkbox' onChange={()=>handleStatus(feedback)} checked={feedback.is_accepted? true : false}></input>
       </div>
     </div>
   )

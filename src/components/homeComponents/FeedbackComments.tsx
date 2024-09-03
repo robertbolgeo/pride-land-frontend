@@ -22,7 +22,8 @@ const FeedbackComments: React.FC<Props> = (props) => {
     const fetchAllFeedbacks = async() => {
         const result = await feedbackApi.fetchAllFeedbacks();
         if(!result) return;
-        setFeedbacks(result);
+        let filteredFeedback = result.filter((feedback) => feedback.is_accepted)
+        setFeedbacks(filteredFeedback);
     }
 
     const createFeedbackDiv = feedbacks.map((feedback, index) => {
