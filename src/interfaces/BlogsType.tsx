@@ -4,3 +4,9 @@ export default interface Blogs {
     text: string,
 }
 
+export interface BlogPageBlogs {
+    id: BigInteger,
+    name: string,
+    text: string,
+}
+

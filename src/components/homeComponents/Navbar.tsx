@@ -7,7 +7,7 @@ const navigation = [
   { name: 'Volunteer', href: '/volunteers', current: false },
   { name: 'About Us', href: '#', current: false },
   { name: 'Shop', href: '#', current: false },
-  { name: 'Contact Us', href: '#', current: false },
+  { name: 'Contact Us', href: '/contactus', current: false },
 ]
 
 
