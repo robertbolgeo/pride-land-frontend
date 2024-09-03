@@ -1,12 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
+import BlogsTypes from '../../interfaces/BlogsType'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 
 
+export const AdminBlogsUpdate = () => {
 
-const AdminBlogsUpdate = () => {
 
-const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
+  const { id } = useParams();
+
+    useEffect(()=> {
+     getData();
+    },[]);
+
+    const getData = async (id) => {
+      let response = await axios.get(process.env.backend_url  + `blogs/${id}/`, formData)
+          try{
+              setBlogs(response.data)
+              console.log(blogs)
+          } catch (error){
+           console.log('error:' , error);
+          }
+    }
+
+    console.log(blogs)
+
+
+    // const fetchAllBlogs = async() => {
+    //   const response = await blogsApi.postBlogs(formData);
+    //     setBlogs(response)
+    // }
 
     return (
     <>
@@ -29,7 +56,7 @@ const [open, setOpen] = useState(true)
                   Edit Blog
                 </DialogTitle>
                 <div className="mt-2">
-                    <form>
+                  <form>
                    {/*  Blog Titles  choose events or blogs*/}
                         <div> 
                             <label htmlFor='name'>Title:</label>
@@ -38,6 +65,7 @@ const [open, setOpen] = useState(true)
                                     type="text" 
                                     id="name" 
                                     name="name"
+                                    value={blogs.name}
                                     >
                                     </input>
                             </div>
@@ -50,6 +78,7 @@ const [open, setOpen] = useState(true)
                             <textarea 
                                         id="title" 
                                         name="title"
+                                        value={blogs.title}
                                         >
                             </textarea>
                             </div>
@@ -63,13 +92,12 @@ const [open, setOpen] = useState(true)
                                     id="images" 
                                     accept="image/*"
                                     name="images"
+                                    value={blogs.images}
                                     >
                             </input>
                         </div>
-                        </form>
+                    </form>
                 </div>
-
-
               </div>
             </div>
           </div>
