@@ -12,7 +12,7 @@ export default function Footer() {
     <div className="flex flex-col gap-4">
      <p className="text-base font-bold sm:text-lg">Support</p>
      <a
-      href=""
+      href="/contactus"
       target="_blank"
       className="cursor-pointer duration-150 hover:text-tertiary">
       Contact Us
@@ -21,7 +21,7 @@ export default function Footer() {
     <div className="flex flex-col gap-4">
      <p className="text-base font-bold sm:text-lg">About us</p>
      <a
-      href=""
+      href="/aboutus"
       target="_blank"
       className="cursor-pointer duration-150 hover:text-tertiary">
       Find out more about our mission
