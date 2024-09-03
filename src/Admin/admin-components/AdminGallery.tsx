@@ -3,7 +3,7 @@ import Gallery from '../admin-pages/Gallery'
 
 const AdminGallery = () => {
   return (
-    <div><Gallery /></div>
+    <Gallery />
   )
 }
 
