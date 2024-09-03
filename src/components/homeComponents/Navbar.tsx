@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
   { name: 'Pride Farm', href: '#', current: true },
   { name: 'Volunteer', href: '/volunteers', current: false },
-  { name: 'About Us', href: '#', current: false },
+  { name: 'About Us', href: '/aboutus', current: false },
   { name: 'Shop', href: '#', current: false },
   { name: 'Contact Us', href: '/contactus', current: false },
 ]
