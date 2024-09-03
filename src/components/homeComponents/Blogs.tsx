@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import * as blogsApi from '../../api/blogs';
 import BlogsTypes from '../../interfaces/BlogsType';
+import { format } from 'date-fns'
 
 interface ImageType {
-   src: string,
+   images: string,
    alt: string
 }
 
@@ -11,7 +12,7 @@ interface Props {
    images: ImageType []
 }
 
-const Blogs: React.FC<Props> = (props) => {
+const Blogs: React.FC<Props> = () => {
   const [blogs, setBlogs ] = useState<BlogsTypes[]>([]);
 
     useEffect(() => {
@@ -24,14 +25,16 @@ const Blogs: React.FC<Props> = (props) => {
     }
 
     const createBlogs = blogs.map((blog, index) => {
-      return <div className="" id={'blogs-' + String(index+1)} key={blog.text + index}>
+      return <div className="" id={'blogs-' + String(index+1)} key={blog.title + index}>
         <div className="">  
           <div className=" ">
                 <div className="bg-white my-4 shadow-md p-2 rounded-lg">
-                <img className="rounded-lg px-20 mt-5 " src={props.images[index].src}></img>
+                <img className="rounded-lg px-20 mt-5 " ></img>
                
                 <div className="my-2 text-center">{blog.name}</div>
-                <div className="p-3">{blog.text}</div>
+                <div className="my-3 text-center">{blog.images}</div>
+                <div className="p-3">{blog.title}</div>
+                <div className="p-3">{format(blog.date_created, 'MM/dd/yyyy')}</div>
               </div>
               </div>
           </div>

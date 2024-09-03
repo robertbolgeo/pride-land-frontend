@@ -1,6 +1,9 @@
 export default interface Blogs {
     id: BigInteger,
     name: string,
-    text: string,
+    title: string,
+    images?: string,
+    date_created: Date,
+
 }
 
