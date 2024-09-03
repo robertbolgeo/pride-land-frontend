@@ -22,15 +22,15 @@ const BlogPage = () => {
 
     return (
         <div className="w-screen">
-            <div className="(Image) grid w-full h-[40rem] border-4 border-solid border-blue-500">
+            <div className="(Image) grid w-full h-[40rem]">
                 <div className="m-auto w-60 h-40 text-center text-[100px] ">Blog</div>
             </div>
-            <div className="(Body) h-full flex border-4 border-solid border-black">
-                <div className="(Blog History) m-10 w-3/12 h-[60rem] border-4 border-solid border-red-500">
+            <div className="(Body) bg-gradient-to-br from-green-300 to-white font-sans h-full flex">
+                <div className="(Blog History) m-10 w-3/12 h-[60rem]">
                     <BlogHistoryList blogsProp={blogs} />
                 </div>
-                <div className="(Selected Month's Blog Posts) m-10 w-4/5 border-4 border-solid border-red-800">
-                    <h1 className="m-auto">Placeholder Month</h1>
+                <div className="(Selected Month's Blog Posts) m-10 w-4/5">
+                    <h1 className="(Selected Month Placeholder) m-auto"></h1>
                     <BlogFocusList blogsProp={blogs} />
                 </div>
             </div>

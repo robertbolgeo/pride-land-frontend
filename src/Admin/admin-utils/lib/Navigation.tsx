@@ -28,9 +28,9 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		icon: <HiOutlineDocumentText />
 	},
 	{
-		key: 'layout',
-		label: 'Layout',
-		path: 'layouts',
+		key: 'gallery',
+		label: 'Gallery',
+		path: 'gallery',
 		icon: <HiOutlineCollection />
 	},
 	{
