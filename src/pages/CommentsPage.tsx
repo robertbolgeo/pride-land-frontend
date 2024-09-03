@@ -10,19 +10,21 @@ const CommentsPage = () => {
 
     // useEffects
     useEffect(() => {
-        setCommentsPageView(initialPageView)
-    })
+        if (commentsPageView === null) {
+            setCommentsPageView(initialPageView);
+        }
+    }, )
     useEffect(() => {
         if (isSubmitted === true) {
-            handleSubmittedPageView();
+            handleIsSubmittedPageView();
         }
     }, [isSubmitted])
 
     // Helper Functions
-    const handleSubmittedPageView = () => {
+    const handleIsSubmittedPageView = () => {
         setCommentsPageView(
-            <div>
-                Thank you for submitting your feedback!
+            <div className="h-full w-full grid">
+                <div className="m-auto">Thank you for submitting your feedback!</div>
             </div>
         )
     }
@@ -31,8 +33,9 @@ const CommentsPage = () => {
         event.preventDefault();
         try{
             const formData = new FormData(event.currentTarget);
-            const request= await postFeedback(formData);
+            const request = await postFeedback(formData);
             setSubmitted(true);
+            return request;
         } catch(error) {
             console.log("Error submitting form", error)
         }
@@ -40,23 +43,23 @@ const CommentsPage = () => {
 
     const initialPageView = (
         <form name="CommentsForm" onSubmit={handleIsSubmitted}>
-            <label>Name</label>
-            <input className="border border-solid border-black"></input> <br/>
-            <label>Comments</label>
-            <input className="border border-solid border-black"></input> <br/>
+            <label htmlFor='name'>Name</label>
+                <input type='text' id='name' name='name' required className="border border-solid border-black"></input> <br/>
+            <label htmlFor='comments'>Comments</label>
+                <input type='text' id='comment' name='comment' required className="border border-solid border-black"></input> <br/>
             <button type="submit">Submit</button>
         </form>
     )
 
     return (
         <div className="flex h-screen w-screen">
-            <div className="(Body) grid w-1/2 h-full border-4 border-solid border-black">
-                <div className="(Blog History) m-auto w-10/12 h-5/6 border-4 border-solid border-red-500">
-                    Comments or Feedback Are Welcome!
+            <div className="(Body) bg-gradient-to-br from-green-300 to-white font-sans grid w-1/2 h-full">
+                <div className="m-auto w-10/12 h-5/6">
+                    <h1 className="text-center">Comments or Feedback Are Welcome!</h1>
                     {commentsPageView}
                 </div>
             </div>
-            <div className="(Image) grid w-1/2 h-full border-4 border-solid border-blue-500">
+            <div className="(Image) grid w-1/2 h-full">
                 <div className="m-auto w-96 h-40 text-center text-[80px] ">Contact Us</div>
             </div>
         </div>
