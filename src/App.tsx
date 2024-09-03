@@ -15,6 +15,7 @@ import AdminComments from "./Admin/admin-components/AdminComments";
 import AdminControlDashboard from "./Admin/admin-components/AdminControlDashboard";
 import AdminGallery from "./Admin/admin-components/AdminGallery";
 import CommentsPage from "./pages/CommentsPage";
+import AboutUsPage from "./pages/AboutUsPage";
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
                             <Route index element={<Home />} />
                             <Route path="blog" element={<BlogPage />} />
                             <Route path="contactus" element={<CommentsPage/>}/>
+                            <Route path="aboutus" element={<AboutUsPage/>}/>
                             <Route path="volunteers" element={<VolunteerPage />} />
                         </Route>
                         <Route path="login" element={<AdminLogin/>}/>
