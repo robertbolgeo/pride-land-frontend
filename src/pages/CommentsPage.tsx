@@ -1,9 +1,22 @@
 const CommentsPage = () => {
+    // useStates
+
+    // useEffects
+
+    // Helper Functions
+
     return (
         <div className="flex h-screen w-screen">
             <div className="(Body) grid w-1/2 h-full border-4 border-solid border-black">
                 <div className="(Blog History) m-auto w-10/12 h-5/6 border-4 border-solid border-red-500">
-                    Comments
+                    Comments or Feedback Are Welcome!
+                    <div>
+                        Name
+                        <input className="border border-solid border-black"></input> <br/>
+                        Comments
+                        <input className="border border-solid border-black"></input> <br/>
+                        <button className="">Submit</button>
+                    </div>
                 </div>
             </div>
             <div className="(Image) grid w-1/2 h-full border-4 border-solid border-blue-500">
