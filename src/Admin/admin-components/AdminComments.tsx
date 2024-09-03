@@ -1,9 +1,12 @@
-import React from 'react'
+
 import Comments from '../admin-pages/Comments'
 
 const AdminComments = () => {
   return (
-    <div><Comments /></div>
+    <div>
+      <div>Feedback List (choose up to 5 to display)</div>
+      <Comments />
+    </div>
   )
 }
 
