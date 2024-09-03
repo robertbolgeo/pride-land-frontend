@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 
 const cardRefs: CardPropsType[] = [
   { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "https://via.placeholder.com/150", link: "#" },
-  { id: 2, title: "Cultivate", description: "Learn about our cultivation process", imgsrc: "https://via.placeholder.com/150", link: "#" },
+  { id: 2, title: "Blog", description: "Read about what's happening on the farm", imgsrc: "https://via.placeholder.com/150", link: "/blog" },
   { id: 3, title: "Produce", description: "Learn about our produce", imgsrc: "https://via.placeholder.com/150", link: "#" },
   { id: 4, title: "Events", description: "View our upcoming events", imgsrc: "https://via.placeholder.com/150", link: "#" },
   { id: 5, title: "Volunteer", description: "Learn about volunteer opportunities", imgsrc: "https://via.placeholder.com/150", link: "#" },

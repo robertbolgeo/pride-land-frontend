@@ -5,7 +5,7 @@ import CardCarousel from "./CardCarousel";
 
 const cardRefs = [
   { name: "Gallery", href: "#" },
-  { name: "Cultivate", href: "#" },
+  { name: "Blog", href: "#" },
   { name: "Produce", href: "#" },
   { name: "Events", href: "#" },
   { name: "Volunteer", href: "#" },
