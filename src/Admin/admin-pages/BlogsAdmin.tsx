@@ -10,7 +10,6 @@ import { useParams } from 'react-router-dom'
 
 
 const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement>) => {
-
 const [open, setOpen] = useState(false)
 const { id } = useParams();
 const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
@@ -32,12 +31,10 @@ const navigate = useNavigate();
     }
   } 
 
-
   const fetchAllBlogs = async() => {
       const response = await blogsApi.fetchAllBlogs();
       setBlogs(response.reverse())
   }
-
 
   const handleDelete = (id: number) => {
     try{
