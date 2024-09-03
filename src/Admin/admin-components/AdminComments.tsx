@@ -5,7 +5,7 @@ const AdminComments = () => {
   return (
     <div>
       <div>Feedback List</div>
-      <div><Comments /></div>
+      <Comments />
     </div>
   )
 }
