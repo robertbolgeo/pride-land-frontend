@@ -43,7 +43,7 @@ const volunteerForm = () => {
                 <label htmlFor='restrictions'>If so what?</label>
                     <input id='restrictions' name='restrictions' type='text'></input> <br/>
                 <input name='status' defaultValue='1' hidden></input>
-                <button type='submit'>submit</button>
+                <button className="my-5 font-semibold" type='submit'>SUBMIT</button>
             </form>
         ) : (
             <div>

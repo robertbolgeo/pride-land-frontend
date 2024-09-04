@@ -49,7 +49,7 @@ const CommentsPage = () => {
                     <input type='text' id='name' name='name' required className="border border-solid border-black"></input> <br/>
                 <label htmlFor='comments'>Comments</label>
                     <input type='text' id='comment' name='comment' required className="border border-solid border-black"></input> <br/>
-                <button type="submit">Submit</button>
+                <button className="my-5 font-semibold" type="submit">SUBMIT</button>
             </form>
         </div>
     )
