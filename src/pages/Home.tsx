@@ -3,6 +3,7 @@ import CardGallery from "../components/homeComponents/CardGallery";
 import FeedbackComments from "../components/homeComponents/FeedbackComments";
 
 import HeroCarousel from "../components/homeComponents/HeroCarousel";
+import MissionStatement from "../components/homeComponents/MissionStatement";
 // import Navbar from "../components/Navbar";
 import Slogan from "../components/homeComponents/Slogan";
 
@@ -22,6 +23,7 @@ function Home() {
       <div className="w-full m-auto"></div>
       <HeroCarousel images={images}></HeroCarousel>
       <Slogan></Slogan>
+      <MissionStatement/>
       <section id="cards" className={"min-h-80 flex flex-col px-4"}>
         <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
         <CardGallery/>
