@@ -4,12 +4,12 @@ import { useState, useEffect } from "react"
 
 
 const cardRefs: CardPropsType[] = [
-  { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "https://via.placeholder.com/150", link: "#" },
-  { id: 2, title: "Blog", description: "Read about what's happening on the farm", imgsrc: "https://via.placeholder.com/150", link: "/blog" },
-  { id: 3, title: "Produce", description: "Learn about our produce", imgsrc: "https://via.placeholder.com/150", link: "#" },
-  { id: 4, title: "Events", description: "View our upcoming events", imgsrc: "https://via.placeholder.com/150", link: "#" },
-  { id: 5, title: "Volunteer", description: "Learn about volunteer opportunities", imgsrc: "https://via.placeholder.com/150", link: "#" },
-  { id: 6, title: "Shop", description: "Shop our products", imgsrc: "https://via.placeholder.com/150", link: "#" }
+  { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "../src/assets/cardassets/bamboo.png", link: "#",},
+  { id: 2, title: "Blog", description: "Read about what's happening on the farm", imgsrc: "../src/assets/cardassets/goat.png", link: "/blog",},
+  { id: 3, title: "Produce", description: "Learn about our produce", imgsrc: "../src/assets/cardassets/cucumber.png", link: "#",},
+  { id: 4, title: "Events", description: "View our upcoming events", imgsrc: "../src/assets/cardassets/chickens.png", link: "#",},
+  { id: 5, title: "Volunteer", description: "Learn about volunteer opportunities", imgsrc: "../src/assets/cardassets/yellowwall.png", link: "#",},
+  { id: 6, title: "Shop", description: "Shop our products", imgsrc: "../src/assets/prideland.png", link: "#",},
 ];
 
 export default function CardCarousel() {
@@ -28,7 +28,7 @@ export default function CardCarousel() {
   }, [mousedOver, currentCard]);
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="hidden md:overflow-hidden md:relative lg:block">
       <div
         className="flex transition ease-out duration-700"
         style={{ transform: `translateX(-${currentCard * 33}%)` }}

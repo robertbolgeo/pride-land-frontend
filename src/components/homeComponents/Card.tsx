@@ -8,7 +8,7 @@ export const Card = ({
   link,
 }: CardPropsType) => {
   return (
-    <div key={id} className="first:ml-[10%] mx-12 text-center max-w-sm bg-[#ffffff] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-w-[25%]">
+    <div key={id} className="first:ml-[33%] mx-12 text-center max-w-sm bg-[#ffffff] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-w-[25%] h-full">
       <a href={link}>
         <img className="rounded-t-md w-full h-[50%]" src={imgsrc} alt="" />
       </a>
