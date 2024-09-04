@@ -3,8 +3,8 @@ import Comments from '../admin-pages/Comments'
 
 const AdminComments = () => {
   return (
-    <div>
-      <div>Feedback List (choose up to 5 to display)</div>
+    <div className='m-10'>
+      <h1 className='text-5xl font-bold'>Feedback List</h1>
       <Comments />
     </div>
   )
