@@ -1,4 +1,4 @@
-import { FaFacebookF, FaYoutube, FaSquareInstagram } from "react-icons/fa6";
+import { FaFacebookF, FaYoutube, FaGithub } from "react-icons/fa6";
 
 export default function Footer() {
  return (
@@ -36,11 +36,10 @@ export default function Footer() {
       Facebook
      </a>
      <a
-      href=""
-      target="_blank"
+      href="https://github.com/pride-land"
       className="cursor-pointer duration-150 hover:text-tertiary">
-      <FaSquareInstagram />
-      Instagram
+      <FaGithub />
+      Github
      </a>
      <a
       href="https://www.youtube.com/channel/UCInYpCvSPY0ezO-gDb7R75Q"
