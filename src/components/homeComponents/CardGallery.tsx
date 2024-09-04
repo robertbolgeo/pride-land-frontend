@@ -24,7 +24,7 @@ export default function CardGallery() {
             value={selected}
             onChange={setSelected}
             aria-label="Server size"
-            className="w-1/4 min-w-52 rounded-xl"
+            className="w-full min-w-52 rounded-xl lg:hidden text-center"
           >
             {cardRefs.map((cardRef) => (
               <Radio
