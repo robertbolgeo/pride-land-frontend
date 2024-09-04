@@ -1,11 +1,18 @@
 export interface AdminVolunteer {
     id: number,
-    email: string,
     name: string,
-    restrictions: string,
-    signup_date: string,
+    email: string,
     start_date: string,
-    is_accepted: boolean;
+    signup_date: string,
+    bamboo: boolean,
+    vegetables: boolean,
+    eggs: boolean,
+    shiitake: boolean,
+    bees: boolean,
+    goats: boolean,
+    construction: boolean,
+    restrictions?: string,
+    is_accepted: boolean,
 }
 
 export interface MinPutVolunteer {

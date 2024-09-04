@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import * as volunteerApi from '../admin-api/admin-volunteers'
 import {AdminVolunteer} from '../admin-interface/AdminVolunteerType';
+import { format } from 'date-fns';
 
 const Volunteer = () => {
   const [volunteers, setVolunteers] = useState<AdminVolunteer[] | null> (null);
@@ -28,8 +29,8 @@ const Volunteer = () => {
 
   const displayVolunteers = volunteers?.map((volunteer) => 
     <div key={volunteer.id}>
-      {volunteer.name} | {volunteer.email} | {volunteer.signup_date} | 
-      {volunteer.start_date} | {volunteer.restrictions} {volunteer.is_accepted? "accepted" : "not accepted"}
+      {volunteer.name} | {volunteer.email} | Date Submitted: {format(volunteer.signup_date, "MM/dd/yy")} | 
+      Volunteer Date: {format(volunteer.start_date, "MM/dd/yy")}@{format(volunteer.start_date, "H:mm")} | {volunteer.restrictions} {volunteer.is_accepted? "accepted" : "not accepted"}
       <div>
         <button onClick={() => changeVolunteerStatus(volunteer)}>Accept/Reject</button>
       </div>

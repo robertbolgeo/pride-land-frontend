@@ -1,6 +1,7 @@
 import { useState } from "react"
 import * as volunteerApi from "../../api/volunteers"
 import Volunteer from "../../interfaces/VolunteersType";
+import { format } from "date-fns";
 
 
 const volunteerForm = () => {
@@ -11,7 +12,7 @@ const volunteerForm = () => {
         event.preventDefault();
         try{
             const formData = new FormData(event.currentTarget);
-            const request= await volunteerApi.postVolunteer(formData);
+            const request = await volunteerApi.postVolunteer(formData);
             setVolunteer(request);
             setSubmitted(true);
         } catch(error) {
@@ -28,21 +29,26 @@ const volunteerForm = () => {
                 <label htmlFor='email'>Email: </label>
                     <input type='email' id='email' name='email' required></input> <br/>
                 <label htmlFor='start_date'>Start Date: </label>
-                    <input type='date' id='start_date' name='start_date' required></input> <br/>
-                <label htmlFor='category'>Category: </label>
-                    <select id='category' name='category' required>
-                        <option defaultValue="">Please choose a category</option>
-                        <option value="1">Weeds</option>
-                        <option value="2">Shittake Mushrooms</option>
-                        <option value="3">Eggs</option>
-                        <option value="4">Bee Keeping</option>
-                        <option value="5">Bamboo</option>
-                    </select> <br/>
+                    <input type='datetime-local' id='start_date' name='start_date' required></input> <br/>
+                <label htmlFor="bamboo">Bamboo: </label>
+                    <input type="checkbox" name="bamboo"></input> <br/>
+                <label htmlFor="vegetables">Vegatables: </label>
+                    <input type="checkbox" name="vegetables"></input> <br/>
+                <label htmlFor="eggs">Eggs: </label>
+                    <input type="checkbox" name="eggs"></input> <br/>
+                <label htmlFor="shiitake">Shiitake: </label>
+                    <input type="checkbox" name="shiitake"></input> <br/>
+                <label htmlFor="bees">Bees: </label>
+                    <input type="checkbox" name="bees"></input> <br/>
+                <label htmlFor="goats">Goats: </label>
+                    <input type="checkbox" name="goats"></input> <br/>
+                <label htmlFor="construction">Construction </label>
+                    <input type="checkbox" name="construction"></input> <br/>
                 <label htmlFor='restrictionsCheck'>Any restrictions we should know about?</label>
                     <input id='restrictionsCheck' name='restrictionsCheck' type='checkbox'></input> <br/>
                 <label htmlFor='restrictions'>If so what?</label>
                     <input id='restrictions' name='restrictions' type='text'></input> <br/>
-                <input name='status' defaultValue='1' hidden></input>
+                <input name='is_accepted' defaultValue="false" hidden></input>
                 <button className="my-5 font-semibold" type='submit'>SUBMIT</button>
             </form>
         ) : (
@@ -51,7 +57,7 @@ const volunteerForm = () => {
                 <div>
                     <h1>Thank you for you interest, {volunteer.name}!</h1>
                     <h2>You will get an email at {volunteer.email}</h2>
-                    <h2>Make sure you remember the date: {volunteer.start_date.toString()}</h2>
+                    <h2>Make sure you remember the date: {format(volunteer.start_date, "MM/dd/yyyy")} at {format(volunteer.start_date, "HH:m")}</h2>
                 </div>
             }           
             </div>
