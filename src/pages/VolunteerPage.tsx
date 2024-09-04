@@ -8,9 +8,7 @@ const VolunteerPage = () => {
         <div>
             <h1>Apply to be a pride farm Volunteer!</h1>
         </div>
-        <div>
-            <VolunteerForm />
-        </div>
+        <VolunteerForm />
     </div>
   )
 }
