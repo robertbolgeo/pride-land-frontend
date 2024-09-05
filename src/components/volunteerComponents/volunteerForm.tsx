@@ -24,6 +24,11 @@ const volunteerForm = () => {
     <div>
         {!isSubmitted ? (
             <form name="myForm" method='POST' onSubmit={handleIsSubmitted}>
+                <label htmlFor='volunteer-status'>Choose your desired role as a volunteer: </label>
+                    <select id='is_regular_volunteer' name='is_regular_volunteer'>
+                        <option value='false'>One-Time Volunteer</option>
+                        <option value='true'>Regular Volunteer</option>
+                    </select> <br/>
                 <label htmlFor='name'>Name: </label>
                     <input type='text' id='name' name='name' required></input> <br/>
                 <label htmlFor='email'>Email: </label>
