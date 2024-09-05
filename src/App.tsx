@@ -18,9 +18,8 @@ import CommentsPage from "./pages/CommentsPage";
 import AboutUsPage from "./pages/AboutUsPage";
 
 
-
-
 const App = () => {
+
     return (
         <>
             <BrowserRouter>

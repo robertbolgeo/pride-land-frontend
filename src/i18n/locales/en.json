@@ -1,0 +1,44 @@
+{
+   "translation": {
+      "navbar": {
+         "home": "HOME",
+         "shop": "shop",
+         "contact": "contact",
+         "join": "Join us"
+      },
+      "main": {
+         "sloganBR": "Find your",
+         "sloganGR": " Open space",
+         "subheadingBR1":"Growing Together:",
+         "subheadingGR1": "Cultivating ",
+         "subheadingBR2": "abilities,",
+         "subheadingGR2": "Nurturing ",
+         "subheadingBR3": "relationships,",
+         "subheadingGR3": "Harvesting ",
+         "subheadingBR4": "community",
+         "vision": "Our mission is to create a society in which everyone, regardless of whether they are able-bodied or disabled, can work freely as they are by respecting their different physical, intellectual, and mental conditions and by giving appropriate consideration to each other.",
+         "category": "We believe",
+         "list1": "Creativity is the source of value. In this digital age, creativity is the source of value.",
+         "list2": "Innovation is born from creativity.",
+         "list3": "To make a place full of blank spaces will give people a chance to be creative."
+      },
+      "footer": {
+         "tm-header": "PRIDE FARM",
+         "trademark": "©2024 PRIDE LANDS ltd. All rights reserved",
+         "support": "Support",
+         "contact": "Contact Us",
+         "About": "About Us",
+         "mission": "Find out more about our mission",
+         "follow": "Follow Us",
+         "facebook": "Facebook",
+         "github": "Github",
+         "Youtube": "Youtube" 
+
+      },
+      "AboutUs": {
+         "ImageText": "About us"
+
+      }
+
+   }
+}
