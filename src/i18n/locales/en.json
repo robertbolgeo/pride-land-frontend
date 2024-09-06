@@ -1,10 +1,11 @@
 {
-   "translation": {
       "navbar": {
          "home": "HOME",
          "shop": "shop",
          "contact": "contact",
-         "join": "Join us"
+         "join": "Join us",
+         "prideFarm": "Pride Farm",
+         "about": "About Us"
       },
       "main": {
          "sloganBR": "Find your",
@@ -40,5 +41,4 @@
 
       }
 
-   }
 }

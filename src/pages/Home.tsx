@@ -9,6 +9,8 @@ import Slogan from "../components/homeComponents/Slogan";
 
 
 function Home() {
+  
+
   const images = [
     { src: "../src/assets/chickens.jpg", alt: "chickens" },
     { src: "../src/assets/volunteers.jpg", alt: "Volunteers" },
@@ -19,7 +21,6 @@ function Home() {
 
   return (
     <div className="bg-gradient-to-br from-green-300 to-white font-sans">
-      {/* <Navbar></Navbar> */}
       <div className="w-full m-auto"></div>
       <HeroCarousel images={images}></HeroCarousel>
       <Slogan></Slogan>
@@ -49,7 +50,6 @@ function Home() {
           />
         </div>
       </section>
-      {/* <Footer></Footer> */}
     </div>
   );
 }

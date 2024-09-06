@@ -1,10 +1,11 @@
 {
-   "translation": {
       "navbar": {
          "home": "ホーム",
          "shop": "ショップ",
          "contact": "コンタクト",
-         "join": "ジョイン"
+         "join": "ジョイン",
+         "prideFarm": "プライドファーム",
+         "about": "プライドランド"
       },
       "main": {
          "sloganBR": "余白だらけ",
@@ -40,5 +41,4 @@
          
       }
 
-   }
 }
