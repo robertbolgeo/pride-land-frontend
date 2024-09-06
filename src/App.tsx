@@ -16,17 +16,22 @@ import AdminControlDashboard from "./Admin/admin-components/AdminControlDashboar
 import AdminGallery from "./Admin/admin-components/AdminGallery";
 import CommentsPage from "./pages/CommentsPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import { createContext, useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-
+const LanguageContext = createContext("");
 
 
 const App = () => {
+    const [currentLang, setCurrentLang] = useState("jp");
+
+
     return (
-        <>
+        <LanguageContext.Provider value={currentLang}>
             <BrowserRouter>
                 <AuthProvider>
                     <Routes>
-                        <Route path="/" element={<Layout />}>
+                        <Route path="/" element={<Layout setCurrentLang={setCurrentLang}/>}>
                             <Route index element={<Home />} />
                             <Route path="blog" element={<BlogPage />} />
                             <Route path="contactus" element={<CommentsPage/>}/>
@@ -46,7 +51,7 @@ const App = () => {
                     </Routes>
                 </AuthProvider>
             </BrowserRouter>
-        </>
+        </LanguageContext.Provider>
     )
 };
 

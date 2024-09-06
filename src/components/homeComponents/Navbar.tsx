@@ -1,17 +1,24 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from 'react-i18next';
 
 
 const navigation = [
-  { name: 'Pride Farm', href: '#', current: true },
-  { name: 'Volunteer', href: '/volunteers', current: false },
-  { name: 'About Us', href: '/aboutus', current: false },
-  { name: 'Shop', href: '#', current: false },
-  { name: 'Contact Us', href: '/contactus', current: false },
+  { name: 'Pride Farm', href: '#', current: true, key: 1 },
+  { name: "join", href: '/volunteers', current: false, key: 2 },
+  { name: 'About Us', href: '/aboutus', current: false, key: 3 },
+  { name: "shop", href: '#', current: false, key: 4 },
+  { name: "contact us", href: '/contactus', current: false, key: 5 },
 ]
 
+const langs = {
+  en: { nativeName: 'English' },
+  jp: { nativeName: 'Japanese' }
+};
 
-export default function Navbar() {
+const Navbar = ({ setCurrentLang }: any) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <Disclosure as="nav" className="bg-primary sticky top-0 z-50">
       <div className="px-6 md:px-2">
@@ -30,33 +37,67 @@ export default function Navbar() {
                 className="h-40 p-0 m-0"
               />
               <div className='flex'>
-              <a key="home" href="./" className='hidden md:ml-2 md:block flex-1 items-center justify-center text-secondary text-lg hover:text-white px-10 py-6'>HOME</a>
+              <a key="home" href="./" className='hidden md:ml-2 md:block flex-1 items-center justify-center text-secondary text-lg hover:text-white px-10 py-6'>{t("navbar.home")}</a>
               </div>
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-end">
             <div className="hidden md:ml-6 md:block">
               <div className="flex">
-                {navigation.map((item) => (
                   <a
-                    key={item.name}
-                    href={item.href}
+                    key={"Pride Farm"}
+                    href={"#"}
                     className=
                       'hover:text-white text-secondary px-4 py-6 text-md font-medium'
                   >
-                    {item.name}
+                    {t("navbar.prideFarm")}
                   </a>
-                ))}
+                  <a
+                    key={"join"}
+                    href={"/volunteers"}
+                    className=
+                      'hover:text-white text-secondary px-4 py-6 text-md font-medium'
+                  >
+                    {t("navbar.join")}
+                  </a>
+                  <a
+                    key={"About Us"}
+                    href={"/aboutus"}
+                    className=
+                      'hover:text-white text-secondary px-4 py-6 text-md font-medium'
+                  >
+                    {t("navbar.about")}
+                  </a>
+                  <a
+                    key={"shop"}
+                    href={"#"}
+                    className=
+                      'hover:text-white text-secondary px-4 py-6 text-md font-medium'
+                  >
+                    {t("navbar.shop")}
+                  </a>
+                  <a
+                    key={"contact us"}
+                    href={"/contactus"}
+                    className=
+                      'hover:text-white text-secondary px-4 py-6 text-md font-medium'
+                      >
+                    {t("navbar.contact")}
+                      </a>
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+            {Object.keys(langs).map((lang) => (
             <button
-              type="button"
-              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:bg-secondary-800  hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800"
+              type="submit"
+              style={{ fontWeight: i18n.resolvedLanguage === lang ? 'bold' : 'normal' }}
+              key={lang}
+              onClick={() => {i18n.changeLanguage(lang); setCurrentLang(lang);}}
+              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:bg-secondary-800 mx-4 hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800"
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">English Japanese translation</span>
-              EN/JP
-            </button>
+              {langs[lang].nativeName}
+            </button>))}
           </div>
         </div>
       </div>
@@ -80,3 +121,5 @@ export default function Navbar() {
     </Disclosure>
   )
 }
+
+export default Navbar;

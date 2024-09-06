@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import * as imageUploadApi from '../admin-api/upload-image'
 import { Form } from 'react-router-dom';
+import dotenv from 'dotenv';
 
 const ImageUpload = () => {
 

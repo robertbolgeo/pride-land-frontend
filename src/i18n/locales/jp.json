@@ -1,0 +1,44 @@
+{
+      "navbar": {
+         "home": "ホーム",
+         "shop": "ショップ",
+         "contact": "コンタクト",
+         "join": "ジョイン",
+         "prideFarm": "プライドファーム",
+         "about": "プライドランド"
+      },
+      "main": {
+         "sloganBR": "余白だらけ",
+         "sloganGR": " の場",
+         "subheadingBR1":"ここで：",
+         "subheadingGR1": "みんな違って、",
+         "subheadingBR2": "みんな同じ仲間",
+         "subheadingGR2": "力を合わせれば",
+         "subheadingBR3": "きっと何でも出来る",
+         "subheadingGR3": "プライド ",
+         "subheadingBR4": "ランド",
+         "vision": "誰もが、本来のありのままの姿で輝き、その在り方が周りにも幸せをもたらす多様が活きるイノベーティブな社会",
+         "category": "私たちは：",
+         "list1": "イキイキ・ワクワク、一生を喜怒哀楽と共に過ごせ",
+         "list2": "仲間の個性が社会的価値に 転換され続ける",
+         "list3": "分断の無い共生コミュニティ"
+      },
+      "footer": {
+         "tm-header": "プライドファーム",
+         "trademark": "NPO法人ぷらいどらんど",
+         "support": "サッポート",
+         "contact": "コンタクト",
+         "About": "プライドランドについて",
+         "mission": "ミッション",
+         "follow": "SMS",
+         "facebook": "フェイスブック",
+         "github": "開発チーム",
+         "Youtube": "ユーチューブ"
+
+      },
+      "AboutUs": {
+         "ImageText": "私たちのプライドランド"
+         
+      }
+
+}
