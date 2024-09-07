@@ -1,0 +1,41 @@
+{
+   "navbar": {
+      "home": "HOME",
+      "shop": "Shop",
+      "contact": "Kontakt",
+      "join": "Beitreten",
+      "prideFarm": "Pride Farm",
+      "about": "Über uns"
+   },
+   "main": {
+      "sloganBR": "Finde deine",
+      "sloganGR": " eigene Leinwand",
+      "subheadingBR1":"Zusammen wachsen",
+      "subheadingGR1": "Kultiviere ",
+      "subheadingBR2": "dein Können,",
+      "subheadingGR2": "Pflege ",
+      "subheadingBR3": "Beziehungen,",
+      "subheadingGR3": "Ernte ",
+      "subheadingBR4": "Gemeinschaft",
+      "vision": "Unsere Mission ist es, eine inklusive Gesellschaft zu schaffen, in der jeder Mensch, unabhängig von seinen Fähigkeiten oder Einschränkungen, die Möglichkeit hat, so zu leben und zu arbeiten, wie er oder sie möchte. Ohne Diskriminierung und mit dem nötigen Respekt vor den individuellen Bedürfnissen sollen alle Menschen die gleichen Chancen haben.",
+      "category": "Wir glauben",
+      "list1": "Kreativität ist der Schlüssel zur Wertschöpfung in unsere digitalen Ära.",
+      "list2": "Innovation entsteht aus der Kreativität.",
+      "list3": "Um eine Leinwand zu erschaffen, damit jeder seine oder ihre Kreativität ausleben kann."
+   },
+   "footer": {
+      "tm-header": "PRIDE FARM",
+      "trademark": "©2024 PRIDE LANDS ltd. Alle Rechte vorbehalten",
+      "support": "Support",
+      "contact": "Kontakt",
+      "about": "Über uns",
+      "mission": "Erfahre mehr über unsere Mission",
+      "follow": "Folge uns",
+      "facebook": "Facebook",
+      "github": "Github",
+      "Youtube": "Youtube"
+   },
+   "AboutUs": {
+      "ImageText": "Über uns"
+   }
+}

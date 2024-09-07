@@ -5,6 +5,8 @@ import CardPropsType from '../../interfaces/CardType';
 import * as layoutApi from '../admin-api/admin-layout';
 import AdminCard from '../admin-components/AdminCard';
 import { FaCircleXmark } from "react-icons/fa6";
+import { FaCirclePlus } from "react-icons/fa6";
+
 
 
 const Layout = () => {
@@ -173,6 +175,8 @@ const heroimages = [
             <p>{image.alt}</p>
         </button>
         )}
+        <button className='m-6 text-center w-36'><FaCirclePlus h-24/>
+        </button>
         </div>
         <h2>Your selected Images:</h2>
         <div className="flex grid grid-rows-a grid-flow-col bg-gray-200 overflow-scroll w-5/6">

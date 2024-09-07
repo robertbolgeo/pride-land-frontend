@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 import en from "./i18n/locales/en.json";
 import jp from "./i18n/locales/jp.json";
 import it from "./i18n/locales/it.json";
+import de from "./i18n/locales/de.json";
 
 i18n.use(initReactI18next).init({
    fallbackLng: "jp",
@@ -16,7 +17,10 @@ i18n.use(initReactI18next).init({
       },
       it: {
          translation: it
-      }
+      },
+      de: {
+         translation: de
+      },
    },
 });
 
