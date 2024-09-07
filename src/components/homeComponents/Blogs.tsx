@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import * as blogsApi from '../../api/blogs';
+import * as fetchBinaryImage from '../../api/fetchBinaryImage'
 import BlogsTypes from '../../interfaces/BlogsType';
 import { format } from 'date-fns'
 
 interface ImageType {
    images: string,
-   alt: string
+   alt: string,
+   src? :string,
 }
 
 interface Props {
    images: ImageType []
 }
 
-const Blogs: React.FC<Props> = () => {
+const Blogs: React.FC<Props> = (props) => {
   const [blogs, setBlogs ] = useState<BlogsTypes[]>([]);
+  const [images, setImages] = useState([]);
 
     useEffect(() => {
-       fetchAllBlogs();
+       fetchAllBlogs(), fetchImages()
     },[]);
 
     const fetchAllBlogs = async() => {
@@ -24,17 +27,22 @@ const Blogs: React.FC<Props> = () => {
         setBlogs(response)
     }
 
-    const createBlogs = blogs.map((blog, index) => {
-      return <div className="" id={'blogs-' + String(index+1)} key={blog.title + index}>
+    const fetchImages = async() => {
+      const response = await fetchBinaryImage.fetchAllBinaryImage()
+      setImages(response)
+    }
+
+    const createBlogs = images.map((image, index) => {
+      return <div className="" id={'blogs-' + String(index+1)} key={index}>
         <div className="">  
           <div className=" ">
                 <div className="bg-white my-4 shadow-md p-2 rounded-lg">
                 <img className="rounded-lg px-20 mt-5 " ></img>
-               
-                <div className="my-2 text-center">{blog.name}</div>
-                <div className="my-3 text-center">{blog.images}</div>
-                <div className="p-3">{blog.title}</div>
-                <div className="p-3">{format(blog.date_created, 'MM/dd/yyyy')}</div>
+                <div className="my-2 text-center">  <img src={`data:image/jpeg;base64,${image.image_b64}`} /></div>
+                <div className="my-3 text-center">{image.id}</div> 
+                {/* <img className="rounded-lg px-20 mt-5 " src={props.images[index].src}></img> */}
+                {/* <div className="p-3">{blog.text}</div>
+                <div className="p-3">{format(blog.date_created, 'MM/dd/yyyy')}</div> */}
               </div>
               </div>
           </div>

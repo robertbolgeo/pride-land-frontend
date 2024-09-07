@@ -7,13 +7,12 @@ import { format } from 'date-fns'
 import { useNavigate } from "react-router-dom";
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useParams } from 'react-router-dom'
+import ImageUpload from "./ImageUpload";
 
 
-const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement>) => {
+const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement> ) => {
 const [open, setOpen] = useState(false)
-const { id } = useParams();
 const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
-const formData = new FormData(e.currentTarget);
 const navigate = useNavigate();
 
   useEffect(()=>{
@@ -21,11 +20,11 @@ const navigate = useNavigate();
   },[]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
     try{
+      e.preventDefault()
+      const formData = new FormData(e.currentTarget)
       const response = await blogsPostApi.postBlogs(formData);
-      console.log("Success!", response)
-      navigate('/admin-layout/blogs-admin')
+      console.log("Form submitted!", response)
     } catch (error){
       console.log("error:" , error)
     }
@@ -39,8 +38,9 @@ const navigate = useNavigate();
   const handleDelete = (id: number) => {
     try{
     Axios.delete(process.env.backend_url  + `blogs/${id}/`)
+    console.log("succesfully deleted!")
     }catch (error){
-      console.log()
+    console.log('error/:', error)
     }
   }
 
@@ -67,26 +67,16 @@ const navigate = useNavigate();
             <label >Blog post:</label>
             <div>
               <textarea 
-                        id="title" 
-                        name="title"
+                        id="text" 
+                        name="text"
                         >
               </textarea>
             </div>
           </div>
-
-          {/* Upload Photo */}
-          <div>
-            <label ></label>
-            <h2> Add image:</h2>
-            <input type="file" 
-                    id="images" 
-                    accept="image/*"
-                    name="images"
-                    >
-            </input>
-          </div>
+         
 
            {/* Post Button */}
+
            <div>
             <label ></label>
             <button type="submit" className="mt-2
@@ -95,6 +85,8 @@ const navigate = useNavigate();
         </form>
       </div>
     </div>
+    <ImageUpload/> 
+
     <hr className="my-3"/>
    <div>
     <div>
@@ -119,6 +111,7 @@ const navigate = useNavigate();
       ))}</div>
     </div>
    </div>
+
 
     {/* Edit */}
   
