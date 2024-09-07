@@ -15,6 +15,7 @@ const langs = {
   en: { nativeName: 'English' },
   jp: { nativeName: '日本語' },
   it: { nativeName: 'Italiano' },
+  de: { nativeName: 'Deutsch' },
 };
 
 const Navbar = ({ setCurrentLang }: any) => {
