@@ -38,7 +38,7 @@ const Blogs: React.FC<Props> = (props) => {
           <div className=" ">
                 <div className="bg-white my-4 shadow-md p-2 rounded-lg">
                 <img className="rounded-lg px-20 mt-5 " ></img>
-                <div className="my-2 text-center">  <img src={`data:image/jpeg;base64,${image.image_b64}`} /></div>
+                <div className="my-2 text-center">  <img src={`data:image/jpeg;base64,${image.blob_img}`} /></div>
                 <div className="my-3 text-center">{image.id}</div> 
                 {/* <img className="rounded-lg px-20 mt-5 " src={props.images[index].src}></img> */}
                 {/* <div className="p-3">{blog.text}</div>
