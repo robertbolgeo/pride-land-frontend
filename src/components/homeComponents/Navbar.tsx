@@ -13,7 +13,8 @@ const navigation = [
 
 const langs = {
   en: { nativeName: 'English' },
-  jp: { nativeName: 'Japanese' }
+  jp: { nativeName: '日本語' },
+  it: { nativeName: 'Italiano' },
 };
 
 const Navbar = ({ setCurrentLang }: any) => {
