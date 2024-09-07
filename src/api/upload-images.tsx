@@ -1,4 +1,4 @@
-const endpoint = process.env.backend_url + 'medias/'
+const endpoint = process.env.media_url + 'upload-img/'
 
 export const postImage= async (formData: FormData) => {
     try {
@@ -13,3 +13,4 @@ export const postImage= async (formData: FormData) => {
         console.log("error", error)
     }
 }
+
