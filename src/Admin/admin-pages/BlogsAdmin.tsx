@@ -12,7 +12,6 @@ import ImageUpload from "./ImageUpload";
 
 const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement> ) => {
 const [open, setOpen] = useState(false)
-const { id } = useParams();
 const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
 const navigate = useNavigate();
 
@@ -47,7 +46,7 @@ const navigate = useNavigate();
 
   return (
     <>
-<ImageUpload/>
+
     <div>
       <div>
         <form name="blogPost" method="POST" onSubmit={handleSubmit}>
@@ -74,9 +73,10 @@ const navigate = useNavigate();
               </textarea>
             </div>
           </div>
-          
+         
 
            {/* Post Button */}
+
            <div>
             <label ></label>
             <button type="submit" className="mt-2
@@ -85,6 +85,8 @@ const navigate = useNavigate();
         </form>
       </div>
     </div>
+    <ImageUpload/> 
+
     <hr className="my-3"/>
    <div>
     <div>
@@ -109,6 +111,7 @@ const navigate = useNavigate();
       ))}</div>
     </div>
    </div>
+
 
     {/* Edit */}
   

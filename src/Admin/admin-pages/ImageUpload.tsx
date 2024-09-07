@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const ImageUpload = () => {
 
+    const UPLOAD_URL =  process.env.media_url;
     const [image, setImage] = useState<string | ArrayBuffer | null>('');
 
     // Function to handle file input change
@@ -24,7 +25,7 @@ const ImageUpload = () => {
       
       console.log(formData)
       try {
-        const response = await axios.post(, formData);
+        const response = await axios.post( UPLOAD_URL , formData);
         console.log('Server Response:', response.data);
       } catch (error) {
         console.error('Error uploading image:', error);
@@ -37,7 +38,7 @@ const ImageUpload = () => {
         <div>
        <form  onSubmit={handleSubmit}>
          <input type="file"  name='blob_img'  onChange={handleFileChange}/>
-         <button type="submit">Upload</button>
+         <button  className='bg-gray-400 rounded-sm p-2' type="submit">Upload Photo</button>
        </form>
      </div>
     </div>
@@ -46,34 +47,3 @@ const ImageUpload = () => {
 }
 
 export default ImageUpload
-
-
-// import axios from 'axios';
-
-// const ImageUpload = () => {
-
-//     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//           e.preventDefault()  
-//           const formData = new FormData(e.currentTarget);
-//           console.log(formData)
-//         try {
-//           const response = await axios.post('http://127.0.0.1:8000/media/upload-img/', formData);
-//           console.log('Server Response:', response.data);
-//         } catch (error) {
-//           console.error('Error uploading image:', error);
-//         }
-//     };
-
-//   return (
-//     <>
-//     <div>
-//       <form  onSubmit={handleSubmit}>
-//         <input type="file"  name='blob_img' />
-//         <button type="submit">Upload</button>
-//       </form>
-//     </div>
-//     </>
-//   )
-// }
-
-// export default ImageUpload
