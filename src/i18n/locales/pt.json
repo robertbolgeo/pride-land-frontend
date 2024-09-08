@@ -1,0 +1,41 @@
+{
+   "navbar": {
+      "home": "PÀGINA INICIAL",
+      "shop": "Loja",
+      "contact": "contato",
+      "join": "Junte-se a nós",
+      "prideFarm": "Pride Farm",
+      "about": "Sobre nós"
+   },
+   "main": {
+      "sloganBR": "Encontre seu",
+      "sloganGR": " Espaço aberto",
+      "subheadingBR1":"Crescendo juntos:",
+      "subheadingGR1": "Cultivando ",
+      "subheadingBR2": "habilidades",
+      "subheadingGR2": "Nutrindo",
+      "subheadingBR3": "relacionamentos,",
+      "subheadingGR3": "Colhendo",
+      "subheadingBR4": "comunidade",
+     "vision": "Nossa missão é construir uma sociedade inclusiva, onde todas as pessoas, incluindo aquelas com deficiência, possam trabalhar livremente e com dignidade, respeitando suas diferenças físicas, intelectuais e mentais, e oferecendo a consideração apropriada a cada indivíduo.",
+      "category": "Acreditamos",
+      "list1": "A origem do valor é a criatividade. Nessa era digital,  criatividade é a fonte do valor",
+      "list2": "Inovação nasceu da criatividade",
+      "list3": "Um lugar cheio de espaços em branco dará às pessoas a chance de serem criativas."
+   },
+   "footer": {
+      "tm-header": "PRIDE FARM",
+      "trademark": "©2024 PRIDE LANDS Ltda. Todos os direitos reservados.",
+      "support": "Suporte",
+      "contact": "Contate-nos",
+      "about": "Sobre nós",
+      "mission": "Saiba mais sobre nossa missão",
+      "follow": "Siga-nos",
+      "facebook": "Facebook",
+      "github": "Github",
+      "Youtube": "Youtube"
+   },
+   "AboutUs": {
+      "ImageText": "Sobre nós"
+   }
+}
