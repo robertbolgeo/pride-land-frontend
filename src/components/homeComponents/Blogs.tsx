@@ -32,17 +32,18 @@ const Blogs: React.FC<Props> = (props) => {
       setImages(response)
     }
 
-    const createBlogs = images.map((image, index) => {
+    console.log(images)
+
+    const createBlogs = blogs.map((blog, index) => {
       return <div className="" id={'blogs-' + String(index+1)} key={index}>
         <div className="">  
           <div className=" ">
                 <div className="bg-white my-4 shadow-md p-2 rounded-lg">
                 <img className="rounded-lg px-20 mt-5 " ></img>
-                <div className="my-2 text-center">  <img src={`data:image/jpeg;base64,${image.blob_img}`} /></div>
-                <div className="my-3 text-center">{image.id}</div> 
-                {/* <img className="rounded-lg px-20 mt-5 " src={props.images[index].src}></img> */}
-                {/* <div className="p-3">{blog.text}</div>
-                <div className="p-3">{format(blog.date_created, 'MM/dd/yyyy')}</div> */}
+                {/* <div className="my-2 text-center">  <img src={`data:image/jpeg;base64,${image.blob_img}`} /></div> */}
+                <img className="rounded-lg px-20 mt-5 " src={props.images[index].src}></img> 
+                <div className="p-3">{blog.text}</div>
+                <div className="p-3">{format(blog.date_created, 'MM/dd/yyyy')}</div> 
               </div>
               </div>
           </div>

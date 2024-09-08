@@ -52,21 +52,20 @@ const ImageUpload = () => {
       const selectedImageId = e.target.value;
       const selected = imageData.find(image => image.id === parseInt(selectedImageId));
       setSelectedImage(selected)
-      
     }
 
     const handleDelete = () => {
       try{
-      axios.delete(GET_URL + `${selectedImage.id}/`)
-      console.log("succesfully deleted!")
+        axios.delete(GET_URL + `${selectedImage.id}/`)
+        console.log("succesfully deleted!")
       }catch (error){
-      console.log('error/:', error)
+        console.log('error/:', error)
       }
     }
 
   return (
     <>
-    <div>
+        <div>
           <div>
           <label>Choose Photo:</label>
             <select name="photo" id="userdropdown" onChange={handleDataChange}>

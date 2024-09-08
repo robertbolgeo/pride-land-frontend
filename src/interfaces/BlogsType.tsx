@@ -4,7 +4,7 @@ export default interface Blogs {
     title: string,
     images?: string,
     date_created: Date,
-
+    text : string,
 }
 
 export interface BlogPageBlogs {
