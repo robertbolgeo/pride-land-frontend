@@ -6,12 +6,13 @@ import { format } from 'date-fns'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import ImageUpload from "./ImageUpload";
 import AdminPostBlog from "../admin-components/AdminPostBlog";
-import AdminTextEditor from "../admin-components/AdminTextEditor";
 
 const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement> ) => {
-const [open, setOpen] = useState(false)
-const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
 
+  
+  const [open, setOpen] = useState(false);
+  const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
+  
   useEffect(()=>{
     fetchAllBlogs()
   },[]);
@@ -42,7 +43,6 @@ const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
 
   return (
     <>
-    <AdminTextEditor/>
     <AdminPostBlog/>
     <ImageUpload/> 
 
@@ -61,7 +61,8 @@ const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
             <div className="flex justify-between p-2  flex-row gap-5" id={"blogs-" + String(index+1)} key={elt.name + index} >
                 <div>{elt.id}</div>
                 <div className="text-center"><span>{format(elt.date_created, 'MM/dd/yyyy')}</span></div>
-                <div className="text-center"><span>{elt.name}</span></div>
+           
+                <div className="text-center">{elt.title}</div>
                 <div className="flex gap-2">
                 <div><button onClick={() => setOpen(true) }className="bg-orange-400 p-1 rounded-md text-xs">Edit</button> </div>
                 <div><button onClick={() => handleDelete(elt.id)} className="bg-red-500 p-1 rounded-md text-xs">Delete</button> </div>

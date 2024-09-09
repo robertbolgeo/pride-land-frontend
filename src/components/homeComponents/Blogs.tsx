@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import * as blogsApi from '../../api/blogs';
 import * as fetchBinaryImage from '../../api/fetchBinaryImage'
 import BlogsTypes from '../../interfaces/BlogsType';
+import Content from "../../Admin/admin-pages/Content";
 import { format } from 'date-fns'
+import parse from 'html-react-parser'
 
 interface ImageType {
    images: string,
@@ -16,43 +18,30 @@ interface Props {
 
 const Blogs: React.FC<Props> = (props) => {
   const [blogs, setBlogs ] = useState<BlogsTypes[]>([]);
-  const [images, setImages] = useState([]);
 
     useEffect(() => {
-       fetchAllBlogs(), fetchImages()
+       fetchAllBlogs()
     },[]);
 
     const fetchAllBlogs = async() => {
       const response = await blogsApi.fetchAllBlogs();
-        setBlogs(response)
+      setBlogs(response)
     }
-    
-    const fetchImages = async() => {
-      const response = await fetchBinaryImage.fetchAllBinaryImage()
-      setImages(response)
-    }
-
-    const createBlogs = blogs.map((blog, index) => {
-      return <div className="" id={'blogs-' + String(index+1)} key={index}>
-        <div className="">  
-          <div className=" ">
-                <div className="bg-white my-4 shadow-md p-2 rounded-lg">
-                <div className="p-3 text-center">{blog.name}</div>
-                <img className="p-10" key={index} src={`data:image/jpeg;base64,${blog.img_url?.blob_img}`}/>
-                <div className="p-3">{blog.text}</div>
-                <div className="p-3">{format(blog.date_created, 'MM/dd/yyyy')}</div> 
-              </div>
-              </div>
-          </div>
-        </div> 
-   })
 
    return (
-    <>      
-      <div className="bg-green-100 mt-36 p-32 mb-0 shadow-lg rounded-md mx-auto max-w-7xl px-6 lg:px-8 "> 
-        <div id='all-blogs'>
-          <div>
-            {createBlogs}
+    <> 
+      <div className="e p-10 m-20 bg-green-100 mt-36 mb-0 shadow-lg rounded-md  max-w-7xl px-6 lg:px-8 " >
+        <div className="bg-green-100 p-5 rounded-sm">
+          <div>{blogs.map((blog, index) => (
+              <div className="bg-white  text-center m-5 p-16 rounded-md shadow-lg" key={index}>
+                <div>{blog.title}</div>
+                <br/>
+                <div>{blog.description}</div>
+                <hr className="mt-3"/><br/>
+                <div> <Content content={parse(blog.content)} /> </div>
+              <div className="text-right mt-3">{format(blog.date_created, 'MM/dd/yyyy')}</div>
+          </div>
+          ))}
           </div>
         </div>
       </div>

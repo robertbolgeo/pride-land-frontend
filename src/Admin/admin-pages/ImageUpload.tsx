@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import * as getImageApi from '../../api/upload-images'
 import axios from 'axios';
-
+  
 const ImageUpload = () => {
 
     const UPLOAD_URL =  process.env.media_url + 'upload-img/';
     const GET_URL = process.env.backend_url + 'medias/';
-    const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-    const [imageData, setImageData] = useState<string | ArrayBuffer | null>([]);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [image, setImage] = useState<string | ArrayBuffer | null >(null);
+    const [imageData, setImageData] = useState<any>([]);
+    const [selectedImage, setSelectedImage] = useState<HTMLImageElement | null >(null);
 
     useEffect(() => {
       handleGetImageById()
     }, []);
     
   //convert Image file to base64 
-  const handleFileChange = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFileChange = (e: any) => {
       const file = e.target.files[0];
       const data = new FileReader();
         data.onloadend = () => {
@@ -23,7 +23,6 @@ const ImageUpload = () => {
         };
       data.readAsDataURL(file);
   };
-
 
     let base64string : string = '';
     
@@ -43,9 +42,9 @@ const ImageUpload = () => {
           }
     };
 
-    const handleDataChange = (e:  React.FormEvent<HTMLInputElement>) => {
+    const handleDataChange = (e: any) => {
       const selectedImageId = e.target.value;
-      const selected = imageData.find(image => image.id === parseInt(selectedImageId));
+      const selected = imageData?.find((image: { id: number }) => image.id === parseInt(selectedImageId));
       setSelectedImage(selected)
     }
     
@@ -71,7 +70,7 @@ const ImageUpload = () => {
       <div className='flex gap-2 mt-2'>
       <div>
             <select  id="userdropdown" onChange={handleDataChange}>
-              {imageData.map((image, index) => (
+              {imageData?.map((image: { id: string | number | boolean |  undefined; alt_text: string}, index: number) => (
               <option key={index}>{image.id} : {image.alt_text}</option>
               ))}
             </select>
