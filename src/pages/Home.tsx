@@ -39,9 +39,9 @@ function Home() {
       </section>
       <section id="blogs" className={"min-h-80 flex flex-col px-4"}>
         <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
-        <Blogs
+        {/* <Blogs
           images = { images }
-        />
+        /> */}
       </section>
       <section id="kuchikomi" className={"min-h-80 flex px-4"}>
         <div className="flex max-w-[1400] mx-auto w-full ">

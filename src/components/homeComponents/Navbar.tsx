@@ -1,24 +1,24 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next';
-
-
-const navigation = [
-  { name: 'Pride Farm', href: '#', current: true, key: 1 },
-  { name: "join", href: '/volunteers', current: false, key: 2 },
-  { name: 'About Us', href: '/aboutus', current: false, key: 3 },
-  { name: "shop", href: '#', current: false, key: 4 },
-  { name: "contact us", href: '/contactus', current: false, key: 5 },
-]
+import Langs from '../../interfaces/LayoutType';
+import { JP, GB, IT, DE, PT } from 'country-flag-icons/react/3x2';
 
 const langs = {
-  en: { nativeName: 'English' },
-  jp: { nativeName: '日本語' },
-  it: { nativeName: 'Italiano' },
-  de: { nativeName: 'Deutsch' },
+  en: { nativeName: 'English', flagIcon: <GB/>},
+  jp: { nativeName: '日本語', flagIcon: <JP/> },
+  it: { nativeName: 'Italiano', flagIcon: <IT/> },
+  de: { nativeName: 'Deutsch', flagIcon: <DE/> },
+  pt: { nativeName: 'Português', flagIcon: <PT/> },
 };
 
-const Navbar = ({ setCurrentLang }: any) => {
+const navigation = [
+  { name: 'Home', href: '/', current: true },
+  { name: 'About', href: '/about', current: false },
+  { name: 'Contact', href: '/contact', current: false },
+];
+
+const Navbar = ({ setCurrentLang, currentLang }: Langs) => {
   const { t, i18n } = useTranslation();
 
   return (
@@ -88,18 +88,18 @@ const Navbar = ({ setCurrentLang }: any) => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-            {Object.keys(langs).map((lang) => (
-            <button
-              type="submit"
-              style={{ fontWeight: i18n.resolvedLanguage === lang ? 'bold' : 'normal' }}
-              key={lang}
-              onClick={() => {i18n.changeLanguage(lang); setCurrentLang(lang);}}
-              className="relative rounded-md bg-secondary px-8 py-4 text-primary hover:bg-secondary-800 mx-4 hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800"
-            >
-              <span className="absolute -inset-1.5" />
-              <span className="sr-only">English Japanese translation</span>
-              {langs[lang].nativeName}
-            </button>))}
+
+<select defaultValue={currentLang} onChange={(e) => {i18n.changeLanguage(e.target.value); setCurrentLang(e.target.value);}} className="bg-white dark:bg-gray-700 dark:text-gray-200 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2">
+  {langs[currentLang].flagIcon}
+  <span className="ms-4 ">{langs[currentLang].nativeName} </span>
+    // Dropdown items mapped from langs object
+       {Object.keys(langs).map((lang) => (
+    <option key={lang} value={lang}>
+        {langs[lang].flagIcon}
+        <span className="ms-4">{langs[lang].nativeName}</span>
+      </option>
+    ))}
+</select>
           </div>
         </div>
       </div>
