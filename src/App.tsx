@@ -16,8 +16,7 @@ import AdminControlDashboard from "./Admin/admin-components/AdminControlDashboar
 import AdminGallery from "./Admin/admin-components/AdminGallery";
 import CommentsPage from "./pages/CommentsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import { createContext, useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { createContext, useState } from "react";
 
 const LanguageContext = createContext("");
 
