@@ -27,6 +27,7 @@
     "noFallthroughCasesInSwitch": true,
     "composite": true
   },
-  "include": ["src/**/*.ts*", "vite.config.ts"],
+  //added .json files to include for the internationalization
+  "include": ["src/**/*.ts*", "src/**/*.json", "vite.config.ts",  "./**/*"],
   "exclude": ["node_modules", "dist", "lib"]
 }

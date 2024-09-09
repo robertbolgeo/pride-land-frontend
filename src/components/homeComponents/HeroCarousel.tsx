@@ -19,9 +19,9 @@ export default function HeroCarousel({images}: HeroCarouselPropsType) {
     <>
 
     <div className="overflow-hidden relative">
-  <div className="flex transition ease-out duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+  <div className="flex transition ease-out duration-700 xl:w-1/2" style={{ transform: `translateX(-${currentSlide * 150}%)` }}>
         {images.map((image, index) => (
-            <img key={index} src={image.src} alt={image.alt} />
+            <img key={index} src={image.src} alt={image.alt} className="xl:ml-[50%]"/>
           
         ))}
     </div>
