@@ -1,4 +1,5 @@
 const endpoint = process.env.media_url + 'upload-img/'
+const get_img_url = process.env.media_url + 'get-img/'
 
 export const postImage= async (formData: FormData) => {
     try {
@@ -7,10 +8,14 @@ export const postImage= async (formData: FormData) => {
             body: formData
         });
         const result = await request.json();
-        console.log(result)
         return result
     } catch(error){
         console.log("error", error)
     }
 }
 
+export const fetchAllImages = async () => {
+    const request = await fetch(get_img_url);
+    const result = await request.json();
+    return result;
+}

@@ -1,91 +1,51 @@
 import { useEffect, useState } from "react"
 import Axios from "axios";
-import * as blogsPostApi from "../admin-api/admin-blogs";
 import BlogsTypes from "../../interfaces/BlogsType"
 import * as blogsApi from "../../api/blogs"
 import { format } from 'date-fns'
-import { useNavigate } from "react-router-dom";
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { useParams } from 'react-router-dom'
 import ImageUpload from "./ImageUpload";
-
+import AdminPostBlog from "../admin-components/AdminPostBlog";
+import AdminTextEditor from "../admin-components/AdminTextEditor";
 
 const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement> ) => {
 const [open, setOpen] = useState(false)
 const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
-const navigate = useNavigate();
 
   useEffect(()=>{
-    fetchAllBlogs();
+    fetchAllBlogs()
   },[]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdate = (id: number) => {
     try{
-      e.preventDefault()
       const formData = new FormData(e.currentTarget)
-      const response = await blogsPostApi.postBlogs(formData);
-      console.log("Form submitted!", response)
-    } catch (error){
-      console.log("error:" , error)
-    }
-  } 
+      Axios.put(process.env.backend_url  + `blogs/${id}/`, formData)
+        console.log("succesfully updated!")
+      }catch (error) {
+        console.log(error);
+      }
+  }
 
   const fetchAllBlogs = async() => {
-      const response = await blogsApi.fetchAllBlogs();
-      setBlogs(response.reverse())
+    const response = await blogsApi.fetchAllBlogs();
+    setBlogs(response.reverse())
   }
 
   const handleDelete = (id: number) => {
     try{
-    Axios.delete(process.env.backend_url  + `blogs/${id}/`)
-    console.log("succesfully deleted!")
+      Axios.delete(process.env.backend_url  + `blogs/${id}/`)
+        console.log("succesfully deleted!")
     }catch (error){
-    console.log('error/:', error)
-    }
+        console.log('error/:', error)
+      }
   }
 
   return (
     <>
-
-    <div>
-      <div>
-        <form name="blogPost" method="POST" onSubmit={handleSubmit}>
-          {/*  Blog Titles  choose events or blogs*/}
-          <div> 
-            <label >Title:</label>
-            <div>
-              <input 
-                    type="text" 
-                    id="name" 
-                    name="name"
-                    >
-                    </input>
-            </div>
-          </div>
-          {/* Blog Post */}
-          <div>
-            <label >Blog post:</label>
-            <div>
-              <textarea 
-                        id="text" 
-                        name="text"
-                        >
-              </textarea>
-            </div>
-          </div>
-         
-
-           {/* Post Button */}
-
-           <div>
-            <label ></label>
-            <button type="submit" className="mt-2
-             bg-red-400 rounded-lg p-1">Post</button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <AdminTextEditor/>
+    <AdminPostBlog/>
     <ImageUpload/> 
+
 
     <hr className="my-3"/>
    <div>
@@ -98,12 +58,11 @@ const navigate = useNavigate();
         <li>Update</li>
       </ul>
       <div>{blogs.map((elt, index) => (
-          <div className="flex justify-between p-2  flex-row gap-5" id={"blogs-" + String(index+1)} key={elt.name + index} >
+            <div className="flex justify-between p-2  flex-row gap-5" id={"blogs-" + String(index+1)} key={elt.name + index} >
                 <div>{elt.id}</div>
                 <div className="text-center"><span>{format(elt.date_created, 'MM/dd/yyyy')}</span></div>
                 <div className="text-center"><span>{elt.name}</span></div>
-                <div className="flex gap-2
-                ">
+                <div className="flex gap-2">
                 <div><button onClick={() => setOpen(true) }className="bg-orange-400 p-1 rounded-md text-xs">Edit</button> </div>
                 <div><button onClick={() => handleDelete(elt.id)} className="bg-red-500 p-1 rounded-md text-xs">Delete</button> </div>
             </div>
@@ -138,7 +97,7 @@ const navigate = useNavigate();
                   Edit Blog
                 </DialogTitle>
                 <div className="mt-2">
-                  <form>
+                  <form >
                    {/*  Blog Titles  choose events or blogs*/}
                         <div> 
                             <label htmlFor='name'>Title:</label>
@@ -147,7 +106,6 @@ const navigate = useNavigate();
                                     type="text" 
                                     id="name" 
                                     name="name"
-                                    value={blogs.name}
                                     >
                                     </input>
                             </div>
@@ -158,26 +116,13 @@ const navigate = useNavigate();
                             <label htmlFor='title'>Blog post:</label>
                             <div>
                             <textarea 
-                                        id="title" 
-                                        name="title"
-                                        value={blogs.title}
+                                        id="text" 
+                                        name="text"                               
                                         >
                             </textarea>
                             </div>
                         </div>
 
-                        {/* Upload Photo */}
-                        <div>
-                            <label htmlFor='images'></label>
-                            <h2> Add image:</h2>
-                            <input type="file" 
-                                    id="images" 
-                                    accept="image/*"
-                                    name="images"
-                                    value={blogs.images}
-                                    >
-                            </input>
-                        </div>
                     </form>
                 </div>
               </div>
@@ -186,6 +131,7 @@ const navigate = useNavigate();
           <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
             <button
               type="button"
+              onSubmit={() => handleUpdate}
               onClick={() => setOpen(false)}
               className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm 
               font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"

@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { AdminCardPropsType, HeroImage } from '../admin-interface/AdminGalleryTypes';
-import CardPropsType from '../../interfaces/CardType';
-import * as layoutApi from '../admin-api/admin-layout';
 import AdminCard from '../admin-components/AdminCard';
 import { FaCircleXmark } from "react-icons/fa6";
 import { FaCirclePlus } from "react-icons/fa6";
+import ImageUpload from './ImageUpload';
 
 
 
 const Layout = () => {
   const [selectedImages, setSelectedImages] = useState<HeroImage[] | null>(null);
-  const [selectedCards, setSelectedCards] = useState<CardPropsType[] | null>(null);
   const [cardEditView, setCardEditView] = useState<string>("none");
   const [cardData, setCardData] = useState<AdminCardPropsType>({
     id: 0,
@@ -161,6 +158,8 @@ const heroimages = [
 
 
   return (
+    <>
+   
     <div className='w-1/2'>
       <div className="hero-images-container">
         <h2>Please choose 5 images for your Top Images</h2>
@@ -178,6 +177,7 @@ const heroimages = [
         <button className='m-6 text-center w-36'><FaCirclePlus h-24/>
         </button>
         </div>
+     
         <h2>Your selected Images:</h2>
         <div className="flex grid grid-rows-a grid-flow-col bg-gray-200 overflow-scroll w-5/6">
           {selectedImages?.map((image) => 
@@ -216,6 +216,8 @@ const heroimages = [
         </div>
         {renderContent()}
         </div>
+        <ImageUpload />
+    </>
   )
 }
 
