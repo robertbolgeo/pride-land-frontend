@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 interface AuthContextType {
     user: jwt.JwtPayload | null;
-    authTokens: any; // If you know the structure, replace `any` with the proper type.
+    authTokens: any; 
     loginUser: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
     logoutUser: () => void;
 }
