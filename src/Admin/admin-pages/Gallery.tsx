@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Image, AdminCardDataPropsType, AdminCardRefPropsType } from '../admin-interface/AdminGalleryTypes';
+import { Image, AdminCardDataPropsType, AdminCardPropsType } from '../admin-interface/AdminGalleryTypes';
 import * as layoutApi from '../admin-api/admin-layout';
 import AdminCard from '../admin-components/AdminCard';
 import { FaCircleXmark } from "react-icons/fa6";
@@ -32,16 +32,14 @@ const Layout = () => {
     setCardEditView: () => {"none"},
 
   });
-  const [cardrefs, setCardRefs] = useState<AdminCardRefPropsType[]>([
-    { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "../src/assets/cardassets/bamboo.png", link: "#", setCardEditView: () => {"imgsrc"}},
-    { id: 2, title: "Blog", description: "Read about what's happening on the farm", imgsrc: "../src/assets/cardassets/goat.png", link: "/blog", setCardEditView: () => {"imgsrc"}},
-    { id: 3, title: "Produce", description: "Learn about our produce", imgsrc: "../src/assets/cardassets/cucumber.png", link: "#", setCardEditView: () => {"imgsrc"}},
-    { id: 4, title: "Events", description: "View our upcoming events", imgsrc: "../src/assets/cardassets/chickens.png", link: "#", setCardEditView: () => {"imgsrc"}},
-    { id: 5, title: "Volunteer", description: "Learn about volunteer opportunities", imgsrc: "../src/assets/cardassets/yellowwall.png", link: "#", setCardEditView: () => {"imgsrc"}},
-    { id: 6, title: "Shop", description: "Shop our products", imgsrc: "../src/assets/prideland.png", link: "#", setCardEditView: () => {"imgsrc"}},
+  const [cardrefs, setCardRefs] = useState<AdminCardPropsType[]>([
+    { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "../src/assets/cardassets/bamboo.png", link: "#", setCardEditView: () => {"imgsrc"}, setCardRefs: () => {"imgsrc"}, cardrefs: [],},
+    { id: 2, title: "Blog", description: "Read about what's happening on the farm", imgsrc: "../src/assets/cardassets/goat.png", link: "/blog", setCardEditView: () => {"imgsrc"}, setCardRefs: () => {"imgsrc"}, cardrefs: [],},
+    { id: 3, title: "Produce", description: "Learn about our produce", imgsrc: "../src/assets/cardassets/cucumber.png", link: "#", setCardEditView: () => {"imgsrc"}, setCardRefs: () => {"imgsrc"}, cardrefs: [],},
+    { id: 4, title: "Events", description: "View our upcoming events", imgsrc: "../src/assets/cardassets/chickens.png", link: "#", setCardEditView: () => {"imgsrc"}, setCardRefs: () => {"imgsrc"}, cardrefs: [],},
+    { id: 5, title: "Volunteer", description: "Learn about volunteer opportunities", imgsrc: "../src/assets/cardassets/yellowwall.png", link: "#", setCardEditView: () => {"imgsrc"}, setCardRefs: () => {"imgsrc"}, cardrefs: [],},
+    { id: 6, title: "Shop", description: "Shop our products", imgsrc: "../src/assets/prideland.png", link: "#", setCardEditView: () => {"imgsrc"}, setCardRefs: () => {"imgsrc"}, cardrefs: [],},
   ]);
-  // const [heroimages, setHeroImages] = useState<HeroImage[] | null>(null);
-  // const [cardrefs, setCardRefs] = useState<CardPropsType[] | null>(null);
 
 const media_url = process.env.media_url;
 
@@ -249,7 +247,6 @@ const renderContent = () => {
           <div className="m-6 w-[400px]" onClick={() => setCardData(card)}>
           <AdminCard
             setCardRefs={setCardRefs}
-            card={card}
             cardrefs={cardrefs}
             key={card.id}  
             id={index}
