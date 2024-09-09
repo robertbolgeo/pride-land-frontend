@@ -58,7 +58,7 @@ const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement> ) => {
         <li>Update</li>
       </ul>
       <div>{blogs.map((elt, index) => (
-            <div className="flex justify-between p-2  flex-row gap-5" id={"blogs-" + String(index+1)} key={elt.name + index} >
+            <div className="flex justify-between p-2  flex-row gap-5" id={"blogs-" + String(index+1)} key={index} >
                 <div>{elt.id}</div>
                 <div className="text-center"><span>{format(elt.date_created, 'MM/dd/yyyy')}</span></div>
            

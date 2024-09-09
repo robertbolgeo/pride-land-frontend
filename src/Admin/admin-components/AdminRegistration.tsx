@@ -22,12 +22,13 @@ const AdminRegistration: React.FC = () => {
         password2: "",
     })
 
-    const handleRegisterChange = (event: React.ChangeEvent<HTMLFormElement> ) => {
-     
-      setFormData( formData => ({
-        ...formData, [event.target.name] : event.target.value }));
-    }
-   
+    const handleRegisterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((formData) => ({
+        ...formData,
+        [event.target.name]: event.target.value,
+      }));
+    };
+
     const handleSumbitForm = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
        event.preventDefault()
 
