@@ -8,7 +8,7 @@ const ImageUpload = () => {
     const GET_URL = process.env.backend_url + 'medias/';
     const [image, setImage] = useState<string | ArrayBuffer | null >(null);
     const [imageData, setImageData] = useState<any>([]);
-    const [selectedImage, setSelectedImage] = useState<HTMLImageElement | null >(null);
+    const [selectedImage, setSelectedImage] = useState<any | null>(null);
 
     useEffect(() => {
       handleGetImageById()
@@ -26,7 +26,7 @@ const ImageUpload = () => {
 
     let base64string : string = '';
     
-    if(image !== null){
+    if(image === 'string' && image !== null){
     base64string = image.replace('data:image/jpeg;base64,',""); 
     }
 

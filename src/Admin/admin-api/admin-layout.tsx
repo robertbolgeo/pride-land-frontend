@@ -40,7 +40,7 @@ export const removeSelectedImage = async(image: Image) => {
     return result;
 }
 
-export const deleteImage = async(image: HeroImage) => {
+export const deleteImage = async(image: Image) => {
     const request = await fetch(endpoint + "heroimages/", {
         method: 'DELETE',
         headers: {
