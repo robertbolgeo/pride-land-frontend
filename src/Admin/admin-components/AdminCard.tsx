@@ -30,7 +30,7 @@ export const AdminCard = ({
         </div>
         
       </div>
-      <FaCircleXmark className="w-10 h-10 text-red-600 bg-black rounded-full absolute -top-4 -right-4 cursor-pointer" onClick={() => setCardRefs(cardrefs.filter((c) => c.id !== id ))}/>
+      <FaCircleXmark className="w-10 h-10 text-red-600 bg-black rounded-full absolute -top-4 -right-4 cursor-pointer" onClick={() => setCardRefs(cardrefs.filter((c) => c.id !== (id + 1)))}/>
     </div>
         </>
   );
