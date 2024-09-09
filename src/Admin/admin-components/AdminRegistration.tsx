@@ -9,11 +9,8 @@ interface ErrorType {
   setError: string,
 }
 
-interface Props {
- success: string,
-}
 
-const AdminRegistration: React.FC<Props> = () => {
+const AdminRegistration = () => {
 
     let navigate = useNavigate();
     const AUTH_REGISTER_URL = process.env.backend_auth_reg_url;
