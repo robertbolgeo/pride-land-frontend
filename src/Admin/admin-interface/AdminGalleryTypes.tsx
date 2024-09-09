@@ -14,8 +14,7 @@ imgsrc: string,
 link: string,
 setCardEditView: (imgsrc: string) => void,
 setCardRefs: (cardrefs: AdminCardPropsType[]) => void,
-card: AdminCardRefPropsType,
-cardrefs: AdminCardRefPropsType[],
+cardrefs: AdminCardPropsType[],
 }
 
 export interface AdminCardRefPropsType {
@@ -24,7 +23,8 @@ export interface AdminCardRefPropsType {
     description: string,
     imgsrc: string, 
     link: string, 
-    setCardEditView: (imgsrc: string) => void 
+    setCardEditView: (imgsrc: string) => void
+    setCardRefs: (cardrefs: AdminCardRefPropsType[]) => void
 }
 
 export interface AdminCardDataPropsType {
