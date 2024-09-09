@@ -20,7 +20,7 @@ const heroimages = [
 
 const Layout = () => {
   const [heroImages, setHeroImages] = useState<Image[] | null>(heroimages);
-  const [newImage, setNewImage] = useState<Image | ArrayBuffer | null>(null);
+  const [newImage, setNewImage] = useState<Image | null>(null);
   const [selectedImages, setSelectedImages] = useState<Image[] | null>(null);
   const [cardEditView, setCardEditView] = useState<string>("none");
   const [cardData, setCardData] = useState<AdminCardDataPropsType>({
@@ -43,6 +43,7 @@ const Layout = () => {
   // const [heroimages, setHeroImages] = useState<HeroImage[] | null>(null);
   // const [cardrefs, setCardRefs] = useState<CardPropsType[] | null>(null);
 
+const media_url = process.env.media_url;
 
   let base64string : string = '';
 //   useEffect(() => {
@@ -62,28 +63,29 @@ const Layout = () => {
 //     setCardRefs(result);
 //   }
 
-const handleImageChange = (newImage: Image) => {
-  const target = e.target as HTMLFormElement;
+const handleImageChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const target = e.target as HTMLInputElement;
   const file = target.files?.[0];
   const data = new FileReader();
   data.onloadend = () => {
-    const newImage = data.result;
-    setHeroImages((prevImages) => {
-      if (prevImages === null) {
-        return [{ blob_img: newImage, alt_text: "new image", date_created: new Date().toISOString(), set_as_hero: true }];
+    const newData = data.result as string;
+    setNewImage({blob_img: newData, alt_text: "new image", set_as_hero: true, date_created: "2024-5-14"});
+    if (heroImages === null) {
+    setHeroImages([newImage as Image]);
       }
-      return [...prevImages, { img: newImage, alt: "new image", dateAdded: new Date().toISOString(), href: "#" }];
-    });
-    setNewImage(newImage);
+    else {
+      return [...heroImages, newImage as Image];
+    };
   };
-  data.readAsDataURL(file);
+  data.readAsDataURL(file as Blob);
 }
+
 
 const handleNewImage = async() => {
   const formData = new FormData();
   formData.append('blob_img', base64string);
     try {
-      const response = await axios.post( UPLOAD_URL , formData);
+      const response = await axios.post((media_url + "upload-img/"), formData);
       console.log('Server Response:', response.data);
     } catch (error) {
       console.error('Error uploading image:', error);
@@ -218,7 +220,7 @@ const renderContent = () => {
         </div>
         )}
         <form onSubmit={handleNewImage}>
-        <input type="file" name="newImage" onChange={(e) => handleImageChange(e)}/>
+        <input type="file" name="newImage" onChange={handleImageChange}/>
         <button type="submit" className='m-6 text-center w-36 bg-gray-400'>Add a new Image
         </button>
         </form>
@@ -227,9 +229,9 @@ const renderContent = () => {
         <div className="flex grid grid-rows-a grid-flow-col bg-gray-200 overflow-scroll w-5/6">
           {selectedImages?.map((image) => 
           <div className="m-6 w-[400px] relative text-center">
-            <img src={image.img} alt={image.alt} className="rounded-md w-full"/>
-            <p>{image.alt}</p>
-            <FaCircleXmark className="w-10 h-10 text-red-600 bg-black rounded-full absolute -top-4 -right-4 cursor-pointer" onClick={() => setSelectedImages(selectedImages.filter((selectedImage) => selectedImage.img !== image.img))}/>
+            <img src={image.blob_img} alt={image.alt_text} className="rounded-md w-full"/>
+            <p>{image.alt_text}</p>
+            <FaCircleXmark className="w-10 h-10 text-red-600 bg-black rounded-full absolute -top-4 -right-4 cursor-pointer" onClick={() => setSelectedImages(selectedImages.filter((selectedImage) => selectedImage.blob_img !== image.blob_img))}/>
           </div>
           )}
 

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "lib": ["dom", "es6"],
     "outDir": "./lib/cjs/",
     "sourceMap": true,
@@ -27,5 +28,5 @@
     "noFallthroughCasesInSwitch": true,
     "composite": true,
   },
-  "include": ["src"]
+  "include": ["src", "src/i18n/locales/*.json"]
 }
