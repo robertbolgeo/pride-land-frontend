@@ -1,9 +1,11 @@
-export interface HeroImage {
-img: string,
-alt: string,
-Hero: boolean,
-dateCreated: string,
+export interface Image {
+id?: number,
+blob_img: string,
+alt_text: string,
+set_as_hero: boolean,
+date_created: string,
 }
+
 export interface AdminCardPropsType {
 id: number,
 title: string,

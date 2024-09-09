@@ -6,7 +6,9 @@ import AdminRegistrationType from "../admin-interface/AdminRegistrationType";
 
 
 
+
 const AdminRegistration: React.FC = () => {
+
 
     let navigate = useNavigate();
     const AUTH_REGISTER_URL = process.env.backend_auth_reg_url;
