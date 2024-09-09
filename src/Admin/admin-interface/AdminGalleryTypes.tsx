@@ -10,5 +10,8 @@ title: string,
 description: string,
 imgsrc: string,
 link: string,
-setCardEditView: (imgsrc: string) => void
+setCardEditView: (imgsrc: string) => void,
+setCardRefs: (cardrefs: AdminCardPropsType[]) => void,
+card: AdminCardPropsType,
+cardrefs: AdminCardPropsType[],
 }

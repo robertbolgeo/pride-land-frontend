@@ -184,7 +184,7 @@ const heroimages = [
           <div className="m-6 w-[400px] relative text-center">
             <img src={image.img} alt={image.alt} className="rounded-md w-full"/>
             <p>{image.alt}</p>
-            <FaCircleXmark className="w-10 h-10 text-red-500 absolute-top-0" onClick={() => setSelectedImages(selectedImages.filter((selectedImage) => selectedImage.img !== image.img))}/>
+            <FaCircleXmark className="w-10 h-10 text-red-600 bg-black rounded-full absolute -top-4 -right-4 cursor-pointer" onClick={() => setSelectedImages(selectedImages.filter((selectedImage) => selectedImage.img !== image.img))}/>
           </div>
           )}
 
@@ -201,6 +201,9 @@ const heroimages = [
         {cardrefs.map((card:AdminCardPropsType, index) => (
           <div className="m-6 w-[400px]" onClick={() => setCardData(card)}>
           <AdminCard
+            setCardRefs={setCardRefs}
+            card={card}
+            cardrefs={cardrefs}
             key={card.id}  
             id={index}
             title={card.title}
@@ -209,7 +212,6 @@ const heroimages = [
             link={card.link}
             setCardEditView={setCardEditView}
            />
-                      <FaCircleXmark className="w-10 h-10 text-red-500 absolute-top-0" onClick={() => setCardRefs(cardrefs.filter((c) => c.id !== card.id))}/>
 
           </div>
         ))}
