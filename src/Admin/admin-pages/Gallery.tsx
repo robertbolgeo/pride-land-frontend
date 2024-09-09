@@ -1,16 +1,32 @@
+import React, { ChangeEventHandler, useEffect } from 'react'
 import { useState } from 'react'
-import { AdminCardPropsType, HeroImage } from '../admin-interface/AdminGalleryTypes';
+import { AdminCardPropsType, HeroImage, AdminCardDataPropsType, AdminCardRefPropsType } from '../admin-interface/AdminGalleryTypes';
+import CardPropsType from '../../interfaces/CardType';
+import * as layoutApi from '../admin-api/admin-layout';
 import AdminCard from '../admin-components/AdminCard';
 import { FaCircleXmark } from "react-icons/fa6";
 import { FaCirclePlus } from "react-icons/fa6";
+import axios from 'axios';
 import ImageUpload from './ImageUpload';
 
 
+const heroimages = [
+  { img: "../src/assets/chickens.jpg", alt: "chickens", dateAdded: "2022-01-01", href: "#" },
+  { img: "../src/assets/volunteers.jpg", alt: "Volunteers", dateAdded: "2022-01-02", href: "#" },
+  { img: "../src/assets/eggs.jpg", alt: "Eggs", dateAdded: "2022-01-03", href: "#" },
+  { img: "../src/assets/vegetable.jpg", alt: "farm work", dateAdded: "2022-01-04", href: "#" },
+  { img: "../src/assets/shiitake.jpg", alt: "mountain work", dateAdded: "2022-01-05", href: "#" },
+  { img: "../src/assets/pudding.png", alt: "pudding", dateAdded: "2022-01-06", href: "#" },
+  { img: "../src/assets/prideland.png", alt: "prideland", dateAdded: "2022-01-07", href: "#" },
+];
 
 const Layout = () => {
+  const [heroImages, setHeroImages] = useState<HeroImage[] | null>(heroimages);
+  const [newImage, setNewImage] = useState<string | ArrayBuffer | null>(null);
   const [selectedImages, setSelectedImages] = useState<HeroImage[] | null>(null);
+  const [selectedCard, setSelectedCard] = useState<CardPropsType | null>(null);
   const [cardEditView, setCardEditView] = useState<string>("none");
-  const [cardData, setCardData] = useState<AdminCardPropsType>({
+  const [cardData, setCardData] = useState<AdminCardDataPropsType>({
     id: 0,
     title: "",
     description: "",
@@ -19,7 +35,7 @@ const Layout = () => {
     setCardEditView: () => {"none"},
 
   });
-  const [cardrefs, setCardRefs] = useState<AdminCardPropsType[]>([
+  const [cardrefs, setCardRefs] = useState<AdminCardRefPropsType[]>([
     { id: 1, title: "Gallery", description: "View our gallery of images", imgsrc: "../src/assets/cardassets/bamboo.png", link: "#", setCardEditView: () => {"imgsrc"}},
     { id: 2, title: "Blog", description: "Read about what's happening on the farm", imgsrc: "../src/assets/cardassets/goat.png", link: "/blog", setCardEditView: () => {"imgsrc"}},
     { id: 3, title: "Produce", description: "Learn about our produce", imgsrc: "../src/assets/cardassets/cucumber.png", link: "#", setCardEditView: () => {"imgsrc"}},
@@ -30,6 +46,8 @@ const Layout = () => {
   // const [heroimages, setHeroImages] = useState<HeroImage[] | null>(null);
   // const [cardrefs, setCardRefs] = useState<CardPropsType[] | null>(null);
 
+
+  let base64string : string = '';
 //   useEffect(() => {
 //     getHeroImages();
 //     getCardRefs();
@@ -47,6 +65,36 @@ const Layout = () => {
 //     setCardRefs(result);
 //   }
 
+const handleImageChange = (e: React.FormEvent<HTMLFormElement>) => {
+  const file = e.target.files[0];
+  const data = new FileReader();
+  data.onloadend = () => {
+    const newImage = data.result;
+    setHeroImages((prevImages) => {
+      if (prevImages === null) {
+        return [{ img: newImage, alt: "new image", dateAdded: new Date().toISOString(), href: "#" }];
+      }
+      return [...prevImages, { img: newImage, alt: "new image", dateAdded: new Date().toISOString(), href: "#" }];
+    });
+    setNewImage(newImage);
+  };
+  data.readAsDataURL(file);
+}
+
+const handleNewImage = async() => {
+  const formData = new FormData();
+  formData.append('blob_img', base64string);
+    try {
+      const response = await axios.post( UPLOAD_URL , formData);
+      console.log('Server Response:', response.data);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+};
+
+const deleteImageFromDb = async(image: HeroImage) => {
+  await layoutApi.deleteImage(image);
+}
 // const submitSelectedImages = async() => {
 //   if (selectedImages === null) {
 //     alert("Please select 5 images");
@@ -88,6 +136,10 @@ const handleSetSelectedImages = (image: HeroImage) => {
   else {
     setSelectedImages([image]);
   }
+}
+
+const addHeroTagToImg = async(image: HeroImage) => {
+  await layoutApi.addHeroTagToImg(image);
 }
 
 const renderContent = () => {
@@ -146,20 +198,9 @@ const renderContent = () => {
 };
 
 
-const heroimages = [
-  { img: "../src/assets/chickens.jpg", alt: "chickens", dateAdded: "2022-01-01", href: "#" },
-  { img: "../src/assets/volunteers.jpg", alt: "Volunteers", dateAdded: "2022-01-02", href: "#" },
-  { img: "../src/assets/eggs.jpg", alt: "Eggs", dateAdded: "2022-01-03", href: "#" },
-  { img: "../src/assets/vegetable.jpg", alt: "farm work", dateAdded: "2022-01-04", href: "#" },
-  { img: "../src/assets/shiitake.jpg", alt: "mountain work", dateAdded: "2022-01-05", href: "#" },
-  { img: "../src/assets/pudding.png", alt: "pudding", dateAdded: "2022-01-06", href: "#" },
-  { img: "../src/assets/prideland.png", alt: "prideland", dateAdded: "2022-01-07", href: "#" },
-];
 
 
   return (
-    <>
-   
     <div className='w-1/2'>
       <div className="hero-images-container">
         <h2>Please choose 5 images for your Top Images</h2>
@@ -168,16 +209,22 @@ const heroimages = [
           {/* create a method to click 5 of those images and set them as selected for the front page. */}
           {/* add a button to add images to the db */}
 
-        {heroimages?.map((image) => 
-        <button className="m-6 w-[400px] focus:border-4 focus:border-indigo-400" onClick={() => handleSetSelectedImages(image)}>
+        {heroImages?.map((image) => 
+        <div className="m-6 w-[400px] relative text-center">
+        <button className="m-6 w-[400px] focus:border-4 focus:border-indigo-400" onClick={() => {handleSetSelectedImages(image); addHeroTagToImg(image)}}>
           <img src={image.img} alt={image.alt} className="rounded-md w-full"/>
             <p>{image.alt}</p>
         </button>
-        )}
-        <button className='m-6 text-center w-36'><FaCirclePlus h-24/>
-        </button>
+        <FaCircleXmark className="w-10 h-10 text-red-600 bg-black rounded-full absolute top-2 -right-10 cursor-pointer" onClick={() => {setHeroImages(heroImages.filter((selectedImage) => selectedImage.img !== image.img)); deleteImageFromDb(image)}}/>
+          {/* change this onClick to add a remove image from db function with an alert */}
         </div>
-     
+        )}
+        <form onSubmit={handleNewImage}>
+        <input type="file" name="newImage" onChange={handleImageChange}/>
+        <button type="submit" className='m-6 text-center w-36 bg-gray-400'>Add a new Image
+        </button>
+        </form>
+        </div>
         <h2>Your selected Images:</h2>
         <div className="flex grid grid-rows-a grid-flow-col bg-gray-200 overflow-scroll w-5/6">
           {selectedImages?.map((image) => 
@@ -216,10 +263,9 @@ const heroimages = [
           </div>
         ))}
         </div>
+        <ImageUpload/>
         {renderContent()}
         </div>
-        <ImageUpload />
-    </>
   )
 }
 
