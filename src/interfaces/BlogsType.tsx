@@ -5,6 +5,7 @@ export default interface Blogs {
     images?: string,
     date_created: Date,
     text : string,
+    img_url : ImageData,
 }
 
 export interface BlogPageBlogs {

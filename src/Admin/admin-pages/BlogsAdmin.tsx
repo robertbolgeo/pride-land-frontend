@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import ImageUpload from "./ImageUpload";
 import AdminPostBlog from "../admin-components/AdminPostBlog";
+import AdminTextEditor from "../admin-components/AdminTextEditor";
 
 const BlogsAdmin = ( e: React.FormEvent<HTMLFormElement> ) => {
 const [open, setOpen] = useState(false)
@@ -41,8 +42,10 @@ const [blogs, setBlogs] = useState<BlogsTypes[]>([]);
 
   return (
     <>
+    <AdminTextEditor/>
     <AdminPostBlog/>
     <ImageUpload/> 
+
 
     <hr className="my-3"/>
    <div>

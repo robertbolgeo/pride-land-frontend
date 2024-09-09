@@ -1,22 +1,40 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
 import * as getImageApi from '../../api/upload-images'
-import * as blogsPostApi from "../admin-api/admin-blogs";
-import * as blogsApi from "../../api/blogs"
+import axios from 'axios';
+
+interface Image {
+  id: number,
+  blob_img : string,
+  set_as_hero : boolean,
+  alt_text : string,
+}
 
 const AdminPostBlog = () => {
-const [imageData, setImageData] = useState<string | ArrayBuffer | null>([]);
+
+const [imageData, setImageData] = useState<any>(null);
 const [selectedImage, setSelectedImage] = useState();
+const [formData, setFormData] = useState({
+    name: "",
+    text: "",
+    img_url: "",
+});
 
 useEffect(()=>{
     handleGetImageById()
-  },[]);
+},[]);
 
-const handleDataChange = (e:  React.FormEvent<HTMLInputElement>) => {
-    const selectedImageId = e.target.value;
-    const selected = imageData.find(image => image.id === parseInt(selectedImageId));
-    setSelectedImage(selected)
+const handleChange = (key: string, e:React.FormEvent<HTMLInputElement> ) => {
+    let value = e.target.value;
+
+    if (key === 'img_url') {
+        value = imageData.find(image => image.id == value)
+    }
+    console.log(typeof value, value)
+    const newData = {...formData, [key]: value}
+    setFormData(newData)
 }
+
 
 const  handleGetImageById = async () => {
     const response = await getImageApi.fetchAllImages();
@@ -24,32 +42,27 @@ const  handleGetImageById = async () => {
     setSelectedImage(response[0])
 };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+const handleSubmit = async (event) => {
+    event.preventDefault();
     try{
-      e.preventDefault()
-      const formData = new FormData(e.currentTarget)
-      const response = await blogsPostApi.postBlogs(formData);
-      console.log("Form submitted!", response)
+      const response = await axios.post('http://127.0.0.1:8000/api/blogs/' , formData);
+      console.log("Form submitted!", response);
     } catch (error){
       console.log("error:" , error)
     }
   } 
-
+  
   return (
   <>
   <div>
   <div>
-        <form name="blogPost" method="POST" onSubmit={handleSubmit}>
-          {/*  Blog Titles  choose events or blogs*/}
+     <form name="blogPost" method="POST" onSubmit={handleSubmit}>
           <div> 
-            <label >Title:</label>
+            <label htmlFor='name'>Title:</label>
             <div>
-              <input 
-                    type="text" 
-                    id="name" 
-                    name="name"
-                    >
-                    </input>
+              <input
+               onChange={e => handleChange('name', e)} type="text" id="name" name="name">
+                </input>
             </div>
           </div>
           {/* Blog Post */}
@@ -57,33 +70,27 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             <label >Blog post:</label>
             <div>
               <textarea 
-                        id="text" 
-                        name="text"
-                        >
+                onChange={e => handleChange('text', e)} id="text" name="text" >
               </textarea>
             </div>
           </div>
          <div>
-          <div>
-          <label>Choose Photo:</label>
-          </div>
-          <select name="photo" id="userdropdown" onChange={handleDataChange}>
-                {imageData.map((image, index) => (
-                  <option key={index}>{image.alt_text}:{image.id}</option>
-                ))}
-            </select>
-         </div>
+            <label>Choose Photo:</label>
+                <select id="img_url" name="img_url" onChange={e => handleChange('img_url', e)}>
+                   {imageData?.map((image, index) => (
+                        <option key={index} value={image.id}>{image.id}</option>
+                    ))} 
+                </select>
+             </div>
       {/* Post Button */}
           <div>
             <label ></label>
-            <button type="submit" className="mt-2
-             bg-red-400 rounded-lg p-1">Post</button>
+            <button className="mt-2
+             bg-red-400 rounded-lg p-1" type='submit'>Post</button>
           </div>
         </form>
       </div>
   </div>
-  
-  
   </>
   )
 }
