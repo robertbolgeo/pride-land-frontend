@@ -1,12 +1,16 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { Outlet } from 'react-router-dom';
+import Langs from '../../interfaces/LayoutType';
 
-const Layout = () => {
+
+
+const Layout = ({ setCurrentLang, currentLang }: Langs) => {
+
   return (
     <section>
-        <Navbar/>
-        <Outlet/>
+       <Navbar />
+        <Outlet />
         <Footer/>
     </section>
   )

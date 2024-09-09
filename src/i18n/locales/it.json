@@ -1,0 +1,41 @@
+{
+   "navbar": {
+      "home": "HOME",
+      "shop": "negozio",
+      "contact": "contatti",
+      "join": "Unisciti a noi",
+      "prideFarm": "Pride Farm",
+      "about": "Su di noi"
+   },
+   "main": {
+      "sloganBR": "Trova il tuo",
+      "sloganGR": " Open space",
+      "subheadingBR1":"Cresciamo insieme:",
+      "subheadingGR1": "Coltiva ",
+      "subheadingBR2": "abilità,",
+      "subheadingGR2": "Nutrimento",
+      "subheadingBR3": "relazioni,",
+      "subheadingGR3": "Raccolto ",
+      "subheadingBR4": "comunità",
+      "vision": "La nostra missione è di creare una società dove tutti abili e disabili, possano lavorare liberamente e rispettare le loro differenze fisiche, intellettuali e condizioni mentali dando la giusta considerazione a tutti.",
+      "category": "Ci crediamo",
+      "list1": "La creatività è la fonte del valore. In questa età digitale la creatività è la fonte dei valori.",
+      "list2": "L'innovazione nasce dalla creatività.",
+      "list3": "Per creare uno spazio pieno di spazi bianchi diamo la possibilità alle persone di essere creative."
+   },
+   "footer": {
+      "tm-header": "PRIDE FARM",
+      "trademark": "©2024 PRIDE LANDS ltd. Tutti i diritti sono riservati",
+      "support": "Supporto",
+      "contact": "Contattaci",
+      "about": "Su di noi",
+      "mission": "Scopri di più sulla nostra missione",
+      "follow": "Seguici",
+      "facebook": "Facebook",
+      "github": "Github",
+      "Youtube": "Youtube"
+   },
+   "AboutUs": {
+      "ImageText": "Su di noi"
+   }
+}

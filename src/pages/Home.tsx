@@ -3,11 +3,14 @@ import CardGallery from "../components/homeComponents/CardGallery";
 import FeedbackComments from "../components/homeComponents/FeedbackComments";
 
 import HeroCarousel from "../components/homeComponents/HeroCarousel";
+import MissionStatement from "../components/homeComponents/MissionStatement";
 // import Navbar from "../components/Navbar";
 import Slogan from "../components/homeComponents/Slogan";
 
 
 function Home() {
+  
+
   const images = [
     { src: "../src/assets/chickens.jpg", alt: "chickens" },
     { src: "../src/assets/volunteers.jpg", alt: "Volunteers" },
@@ -18,10 +21,10 @@ function Home() {
 
   return (
     <div className="bg-gradient-to-br from-green-300 to-white font-sans">
-      {/* <Navbar></Navbar> */}
       <div className="w-full m-auto"></div>
       <HeroCarousel images={images}></HeroCarousel>
       <Slogan></Slogan>
+      <MissionStatement/>
       <section id="cards" className={"min-h-80 flex flex-col px-4"}>
         <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
         <CardGallery/>
@@ -36,9 +39,7 @@ function Home() {
       </section>
       <section id="blogs" className={"min-h-80 flex flex-col px-4"}>
         <div className="flex flex-col flex-1 max-w-[1400] mx-auto w-full"></div>
-        <Blogs
-          images = { images }
-        />
+        <Blogs />
       </section>
       <section id="kuchikomi" className={"min-h-80 flex px-4"}>
         <div className="flex max-w-[1400] mx-auto w-full ">
@@ -47,7 +48,6 @@ function Home() {
           />
         </div>
       </section>
-      {/* <Footer></Footer> */}
     </div>
   );
 }
