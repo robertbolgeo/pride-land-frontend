@@ -45,16 +45,16 @@ const App = () => {
                 <AuthProvider>
                     { currentLang &&
                     <Routes>
-                        <Route path="" element={<Layout setCurrentLang={setCurrentLang} currentLang={currentLang}/>}>
+                        <Route path="/" element={<Layout setCurrentLang={setCurrentLang} currentLang={currentLang}/>}>
                             <Route index element={<Home />} />
                             <Route path="blog" element={<BlogPage />} />
                             <Route path="contactus" element={<CommentsPage/>}/>
                             <Route path="aboutus" element={<AboutUsPage/>}/>
                             <Route path="volunteers" element={<VolunteerPage />} />
                         </Route>    
-                        <Route path="login" element={<AdminLogin/>}/>
-                        <Route path="register" element={<AdminRegistration/>} />
-                        <Route path="admin-layout" element={<AdminLayout/>}>
+                        <Route path="/login" element={<AdminLogin/>}/>
+                        <Route path="/register" element={<AdminRegistration/>} />
+                        <Route path="/admin-layout" element={<AdminLayout/>}>
                               <Route index element={<AdminDashboard/>} />
                               <Route path="blogs-admin" element={<AdminBlogs/>} />
                               <Route path="volunteer" element={<AdminVolunteer/>} />
