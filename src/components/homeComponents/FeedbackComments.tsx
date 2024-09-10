@@ -12,7 +12,7 @@ interface Props {
     images: ImageType []
 }
 
-const FeedbackComments: React.FC<Props> = (props) => {
+const FeedbackComments: React.FC<Props> = () => {
 
     const [feedbacks, setFeedbacks] = useState<FeedbackType []>([]);
     
