@@ -16,30 +16,44 @@ import AdminControlDashboard from "./Admin/admin-components/AdminControlDashboar
 import AdminGallery from "./Admin/admin-components/AdminGallery";
 import CommentsPage from "./pages/CommentsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import { createContext, useState } from "react";
-
-const LanguageContext = createContext("");
+import { createContext, useEffect, useState } from "react";
 
 
 const App = () => {
-    const [currentLang, setCurrentLang] = useState("jp");
+    let LanguageContext = createContext("");
+    const [currentLang, setCurrentLang] = useState("");
+        
+    // Get the language from local storage so it doesn't change on refresh
+    useEffect(() => {
+        const lang = sessionStorage.getItem("lang");
+        console.log(lang);
+        if (lang) {
+            setCurrentLang(lang);
+            LanguageContext = createContext(lang);
+        } else {
+            setCurrentLang("jp");
+            LanguageContext = createContext("jp");
+
+        }
+    }, []);
 
 
     return (
         <LanguageContext.Provider value={currentLang}>
             <BrowserRouter>
                 <AuthProvider>
+                    { currentLang &&
                     <Routes>
-                        <Route path="" element={<Layout setCurrentLang={setCurrentLang} currentLang={currentLang}/>}>
+                        <Route path="/" element={<Layout setCurrentLang={setCurrentLang} currentLang={currentLang}/>}>
                             <Route index element={<Home />} />
                             <Route path="blog" element={<BlogPage />} />
                             <Route path="contactus" element={<CommentsPage/>}/>
                             <Route path="aboutus" element={<AboutUsPage/>}/>
                             <Route path="volunteers" element={<VolunteerPage />} />
                         </Route>    
-                        <Route path="login" element={<AdminLogin/>}/>
-                        <Route path="register" element={<AdminRegistration/>} />
-                        <Route path="admin-layout" element={<AdminLayout/>}>
+                        <Route path="/login" element={<AdminLogin/>}/>
+                        <Route path="/register" element={<AdminRegistration/>} />
+                        <Route path="/admin-layout" element={<AdminLayout/>}>
                               <Route index element={<AdminDashboard/>} />
                               <Route path="blogs-admin" element={<AdminBlogs/>} />
                               <Route path="volunteer" element={<AdminVolunteer/>} />
@@ -48,10 +62,13 @@ const App = () => {
                               <Route path="admin-controls" element={<AdminControlDashboard/>} />
                         </Route>
                     </Routes>
+}
                 </AuthProvider>
             </BrowserRouter>
         </LanguageContext.Provider>
+        
     )
 };
+
 
 export default App;

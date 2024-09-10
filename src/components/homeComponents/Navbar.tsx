@@ -20,6 +20,13 @@ const navigation = [
 const Navbar = ({ setCurrentLang, currentLang }: Langs) => {
   const { t, i18n } = useTranslation();
 
+  const handleLangChange = (lang: string) => {
+    i18n.changeLanguage(lang);
+    setCurrentLang(lang);
+    sessionStorage.setItem("lang", lang);
+    console.log(sessionStorage.getItem("lang"));
+  }
+
   return (
     <Disclosure as="nav" className="bg-primary sticky top-0 z-50">
       <div className="px-6 md:px-2">
@@ -88,7 +95,7 @@ const Navbar = ({ setCurrentLang, currentLang }: Langs) => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
 
-<select defaultValue={currentLang} onChange={(e) => {i18n.changeLanguage(e.target.value); setCurrentLang(e.target.value);}} className="bg-white dark:bg-gray-700 dark:text-gray-200 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2">
+<select defaultValue={currentLang} onChange={(e) => handleLangChange(e.target.value)} className="bg-white dark:bg-gray-700 dark:text-gray-200 border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2">
   <span className="ms-4 ">{langs[currentLang].nativeName} </span>
     // Dropdown items mapped from langs object
        {Object.keys(langs).map((lang) => (
